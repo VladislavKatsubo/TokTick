@@ -1,0 +1,788 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0D0BCC6929B7BD03004A4422 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0D0BCC6829B7BD03004A4422 /* SnapKit */; };
+		0D0BCC7029B7C581004A4422 /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BCC6F29B7C581004A4422 /* AuthTextField.swift */; };
+		0D0BCC7429B88EBC004A4422 /* TViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BCC7329B88EBC004A4422 /* TViewController.swift */; };
+		0D0BCC7729B89FB0004A4422 /* TStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BCC7629B89FB0004A4422 /* TStackView.swift */; };
+		0D0BCC7B29B8CB37004A4422 /* UIButton+Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BCC7A29B8CB37004A4422 /* UIButton+Title.swift */; };
+		0D0BCC7E29B8CB57004A4422 /* TButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BCC7D29B8CB57004A4422 /* TButton.swift */; };
+		0D0BCC8029B9E147004A4422 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BCC7F29B9E147004A4422 /* AuthButton.swift */; };
+		0D0BCC8229B9F8EC004A4422 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BCC8129B9F8EC004A4422 /* MainCoordinator.swift */; };
+		0D0BCC8429BA011F004A4422 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BCC8329BA011F004A4422 /* AuthService.swift */; };
+		0D0BCC8629BA065F004A4422 /* LoginCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BCC8529BA065F004A4422 /* LoginCredentials.swift */; };
+		0D0BCC8829BA089F004A4422 /* AuthResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BCC8729BA089F004A4422 /* AuthResources.swift */; };
+		0D0BCC8B29BA0E08004A4422 /* TokenListResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BCC8A29BA0E08004A4422 /* TokenListResources.swift */; };
+		0D0BCC8D29BA0E10004A4422 /* TokenListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BCC8C29BA0E10004A4422 /* TokenListViewModel.swift */; };
+		0D0BCC8F29BA0E1A004A4422 /* TokenListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BCC8E29BA0E1A004A4422 /* TokenListViewController.swift */; };
+		0D0BCC9429BA0E3D004A4422 /* TokenListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BCC9329BA0E3D004A4422 /* TokenListTableView.swift */; };
+		0D0BCC9729BA0E4D004A4422 /* TokenListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BCC9629BA0E4D004A4422 /* TokenListCell.swift */; };
+		0D0BCC9B29BA0E5F004A4422 /* TokenListCell+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BCC9A29BA0E5F004A4422 /* TokenListCell+Model.swift */; };
+		0D0BCCA429BD06D7004A4422 /* UIResponder+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BCCA329BD06D7004A4422 /* UIResponder+Utils.swift */; };
+		0D0BCCA729BE52EF004A4422 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BCCA629BE52EF004A4422 /* NetworkManager.swift */; };
+		0D0BCCAA29BE5572004A4422 /* AppContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BCCA929BE5572004A4422 /* AppContext.swift */; };
+		0D0BCCAE29BE5C01004A4422 /* TView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BCCAD29BE5C01004A4422 /* TView.swift */; };
+		0D0BCCB029BE730D004A4422 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BCCAF29BE730D004A4422 /* Asset.swift */; };
+		0D0BCCB229C0A7ED004A4422 /* Coins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BCCB129C0A7ED004A4422 /* Coins.swift */; };
+		0D13FC5129C0DA0C00156378 /* TokenIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D13FC5029C0DA0C00156378 /* TokenIconView.swift */; };
+		0D13FC5329C19C9600156378 /* TokenSymbolNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D13FC5229C19C9600156378 /* TokenSymbolNameView.swift */; };
+		0D13FC5529C1AA9C00156378 /* TokenMarketDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D13FC5429C1AA9C00156378 /* TokenMarketDataView.swift */; };
+		0D13FC5729C1C68300156378 /* Double+ConvertToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D13FC5629C1C68300156378 /* Double+ConvertToString.swift */; };
+		0D13FC5929C1E9DF00156378 /* NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D13FC5829C1E9DF00156378 /* NSAttributedString.swift */; };
+		0D13FC6B29C4A87900156378 /* UITableView+AnimatedReloading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D13FC6A29C4A87900156378 /* UITableView+AnimatedReloading.swift */; };
+		0D13FC7429C5E03900156378 /* TokenListSkeletonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D13FC7329C5E03900156378 /* TokenListSkeletonCell.swift */; };
+		0D13FC7629CA48A400156378 /* SkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D13FC7529CA48A400156378 /* SkeletonView.swift */; };
+		0D13FC7B29CB1AC900156378 /* TokenListTableViewToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D13FC7A29CB1AC900156378 /* TokenListTableViewToolbar.swift */; };
+		0D13FC7D29CB27F000156378 /* TokenListAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D13FC7C29CB27F000156378 /* TokenListAccountView.swift */; };
+		0D13FC8529CB409B00156378 /* TokenListAccountView+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D13FC8429CB409B00156378 /* TokenListAccountView+Model.swift */; };
+		0D7FB55929B7A86A00B735CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7FB55829B7A86A00B735CC /* AppDelegate.swift */; };
+		0D7FB55B29B7A86A00B735CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7FB55A29B7A86A00B735CC /* SceneDelegate.swift */; };
+		0D7FB56229B7A86B00B735CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D7FB56129B7A86B00B735CC /* Assets.xcassets */; };
+		0D7FB56529B7A86B00B735CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D7FB56329B7A86B00B735CC /* LaunchScreen.storyboard */; };
+		0D7FB56F29B7A8E000B735CC /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7FB56E29B7A8DF00B735CC /* AuthViewController.swift */; };
+		0D7FB57129B7A8FB00B735CC /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7FB57029B7A8FB00B735CC /* AuthViewModel.swift */; };
+		0D7FB57329B7ABFC00B735CC /* TTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7FB57229B7ABFC00B735CC /* TTextField.swift */; };
+		0DC9705429CCEB7100EB88E1 /* TokenDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC9705329CCEB7100EB88E1 /* TokenDetailsViewController.swift */; };
+		0DC9705629CCEB7E00EB88E1 /* TokenDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC9705529CCEB7E00EB88E1 /* TokenDetailsViewModel.swift */; };
+		0DC9705829CCEB8800EB88E1 /* TokenDetailsResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC9705729CCEB8800EB88E1 /* TokenDetailsResources.swift */; };
+		0DE2CD1529CC33B30079325C /* AccountIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE2CD1429CC33B30079325C /* AccountIconView.swift */; };
+		0DE2CD1829CC3F720079325C /* AccountLogoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE2CD1729CC3F720079325C /* AccountLogoutButton.swift */; };
+		0DE2CD1D29CC8A920079325C /* TokenListBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE2CD1C29CC8A920079325C /* TokenListBalanceView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0D0BCC6F29B7C581004A4422 /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
+		0D0BCC7329B88EBC004A4422 /* TViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TViewController.swift; sourceTree = "<group>"; };
+		0D0BCC7629B89FB0004A4422 /* TStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TStackView.swift; sourceTree = "<group>"; };
+		0D0BCC7A29B8CB37004A4422 /* UIButton+Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Title.swift"; sourceTree = "<group>"; };
+		0D0BCC7D29B8CB57004A4422 /* TButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TButton.swift; sourceTree = "<group>"; };
+		0D0BCC7F29B9E147004A4422 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
+		0D0BCC8129B9F8EC004A4422 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		0D0BCC8329BA011F004A4422 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		0D0BCC8529BA065F004A4422 /* LoginCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCredentials.swift; sourceTree = "<group>"; };
+		0D0BCC8729BA089F004A4422 /* AuthResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResources.swift; sourceTree = "<group>"; };
+		0D0BCC8A29BA0E08004A4422 /* TokenListResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenListResources.swift; sourceTree = "<group>"; };
+		0D0BCC8C29BA0E10004A4422 /* TokenListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenListViewModel.swift; sourceTree = "<group>"; };
+		0D0BCC8E29BA0E1A004A4422 /* TokenListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenListViewController.swift; sourceTree = "<group>"; };
+		0D0BCC9329BA0E3D004A4422 /* TokenListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenListTableView.swift; sourceTree = "<group>"; };
+		0D0BCC9629BA0E4D004A4422 /* TokenListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenListCell.swift; sourceTree = "<group>"; };
+		0D0BCC9A29BA0E5F004A4422 /* TokenListCell+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TokenListCell+Model.swift"; sourceTree = "<group>"; };
+		0D0BCCA329BD06D7004A4422 /* UIResponder+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Utils.swift"; sourceTree = "<group>"; };
+		0D0BCCA629BE52EF004A4422 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		0D0BCCA929BE5572004A4422 /* AppContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContext.swift; sourceTree = "<group>"; };
+		0D0BCCAD29BE5C01004A4422 /* TView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TView.swift; sourceTree = "<group>"; };
+		0D0BCCAF29BE730D004A4422 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
+		0D0BCCB129C0A7ED004A4422 /* Coins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coins.swift; sourceTree = "<group>"; };
+		0D13FC5029C0DA0C00156378 /* TokenIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenIconView.swift; sourceTree = "<group>"; };
+		0D13FC5229C19C9600156378 /* TokenSymbolNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenSymbolNameView.swift; sourceTree = "<group>"; };
+		0D13FC5429C1AA9C00156378 /* TokenMarketDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenMarketDataView.swift; sourceTree = "<group>"; };
+		0D13FC5629C1C68300156378 /* Double+ConvertToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+ConvertToString.swift"; sourceTree = "<group>"; };
+		0D13FC5829C1E9DF00156378 /* NSAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedString.swift; sourceTree = "<group>"; };
+		0D13FC6A29C4A87900156378 /* UITableView+AnimatedReloading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+AnimatedReloading.swift"; sourceTree = "<group>"; };
+		0D13FC7329C5E03900156378 /* TokenListSkeletonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenListSkeletonCell.swift; sourceTree = "<group>"; };
+		0D13FC7529CA48A400156378 /* SkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonView.swift; sourceTree = "<group>"; };
+		0D13FC7A29CB1AC900156378 /* TokenListTableViewToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenListTableViewToolbar.swift; sourceTree = "<group>"; };
+		0D13FC7C29CB27F000156378 /* TokenListAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenListAccountView.swift; sourceTree = "<group>"; };
+		0D13FC8429CB409B00156378 /* TokenListAccountView+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TokenListAccountView+Model.swift"; sourceTree = "<group>"; };
+		0D7FB55529B7A86A00B735CC /* TokenTicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TokenTicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D7FB55829B7A86A00B735CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0D7FB55A29B7A86A00B735CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		0D7FB56129B7A86B00B735CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0D7FB56429B7A86B00B735CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0D7FB56629B7A86B00B735CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D7FB56E29B7A8DF00B735CC /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		0D7FB57029B7A8FB00B735CC /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		0D7FB57229B7ABFC00B735CC /* TTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTextField.swift; sourceTree = "<group>"; };
+		0DC9705329CCEB7100EB88E1 /* TokenDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDetailsViewController.swift; sourceTree = "<group>"; };
+		0DC9705529CCEB7E00EB88E1 /* TokenDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDetailsViewModel.swift; sourceTree = "<group>"; };
+		0DC9705729CCEB8800EB88E1 /* TokenDetailsResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDetailsResources.swift; sourceTree = "<group>"; };
+		0DE2CD1429CC33B30079325C /* AccountIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountIconView.swift; sourceTree = "<group>"; };
+		0DE2CD1729CC3F720079325C /* AccountLogoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountLogoutButton.swift; sourceTree = "<group>"; };
+		0DE2CD1C29CC8A920079325C /* TokenListBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenListBalanceView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0D7FB55229B7A86A00B735CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D0BCC6929B7BD03004A4422 /* SnapKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0D0BCC7129B88E9C004A4422 /* TTextField */ = {
+			isa = PBXGroup;
+			children = (
+				0D7FB57229B7ABFC00B735CC /* TTextField.swift */,
+			);
+			path = TTextField;
+			sourceTree = "<group>";
+		};
+		0D0BCC7229B88EB1004A4422 /* TViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0D0BCC7329B88EBC004A4422 /* TViewController.swift */,
+			);
+			path = TViewController;
+			sourceTree = "<group>";
+		};
+		0D0BCC7529B89F96004A4422 /* TStackView */ = {
+			isa = PBXGroup;
+			children = (
+				0D0BCC7629B89FB0004A4422 /* TStackView.swift */,
+			);
+			path = TStackView;
+			sourceTree = "<group>";
+		};
+		0D0BCC7829B8CB21004A4422 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0D0BCCB329C0AC15004A4422 /* MockData */,
+				0D0BCC7929B8CB29004A4422 /* Extensions */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		0D0BCC7929B8CB29004A4422 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0D0BCC7A29B8CB37004A4422 /* UIButton+Title.swift */,
+				0D0BCCA329BD06D7004A4422 /* UIResponder+Utils.swift */,
+				0D13FC5629C1C68300156378 /* Double+ConvertToString.swift */,
+				0D13FC5829C1E9DF00156378 /* NSAttributedString.swift */,
+				0D13FC6A29C4A87900156378 /* UITableView+AnimatedReloading.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0D0BCC7C29B8CB44004A4422 /* TButton */ = {
+			isa = PBXGroup;
+			children = (
+				0D0BCC7D29B8CB57004A4422 /* TButton.swift */,
+			);
+			path = TButton;
+			sourceTree = "<group>";
+		};
+		0D0BCC8929BA0DF6004A4422 /* TokenList */ = {
+			isa = PBXGroup;
+			children = (
+				0D0BCC9029BA0E1D004A4422 /* Views */,
+				0D0BCC8A29BA0E08004A4422 /* TokenListResources.swift */,
+				0D0BCC8C29BA0E10004A4422 /* TokenListViewModel.swift */,
+				0D0BCC8E29BA0E1A004A4422 /* TokenListViewController.swift */,
+			);
+			path = TokenList;
+			sourceTree = "<group>";
+		};
+		0D0BCC9029BA0E1D004A4422 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0D13FC8129CB286900156378 /* TokenListAccountView */,
+				0DE2CD1B29CC8A860079325C /* TokenListBalanceView */,
+				0D13FC7929CB1AB800156378 /* TokenListTableViewToolbar */,
+				0D0BCC9129BA0E22004A4422 /* TokenListTableView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0D0BCC9129BA0E22004A4422 /* TokenListTableView */ = {
+			isa = PBXGroup;
+			children = (
+				0D13FC7129C5E02B00156378 /* TokenListSkeletonCell */,
+				0D0BCC9229BA0E29004A4422 /* TokenListCell */,
+				0D0BCC9329BA0E3D004A4422 /* TokenListTableView.swift */,
+			);
+			path = TokenListTableView;
+			sourceTree = "<group>";
+		};
+		0D0BCC9229BA0E29004A4422 /* TokenListCell */ = {
+			isa = PBXGroup;
+			children = (
+				0D13FC4F29C0DA0300156378 /* Views */,
+				0D0BCC9629BA0E4D004A4422 /* TokenListCell.swift */,
+				0D0BCC9A29BA0E5F004A4422 /* TokenListCell+Model.swift */,
+			);
+			path = TokenListCell;
+			sourceTree = "<group>";
+		};
+		0D0BCCA029BB6413004A4422 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				0D13FC8229CB289E00156378 /* Views */,
+				0D0BCCA129BB6418004A4422 /* TViews */,
+				0D0BCCA529BE3FBF004A4422 /* Services */,
+				0D0BCCA229BB6483004A4422 /* Navigation */,
+				0D0BCCA829BE5569004A4422 /* Context */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		0D0BCCA129BB6418004A4422 /* TViews */ = {
+			isa = PBXGroup;
+			children = (
+				0D0BCC7229B88EB1004A4422 /* TViewController */,
+				0D0BCC7129B88E9C004A4422 /* TTextField */,
+				0D0BCC7529B89F96004A4422 /* TStackView */,
+				0D0BCC7C29B8CB44004A4422 /* TButton */,
+				0D0BCCAC29BE5BF8004A4422 /* TView */,
+			);
+			path = TViews;
+			sourceTree = "<group>";
+		};
+		0D0BCCA229BB6483004A4422 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				0D0BCC8129B9F8EC004A4422 /* MainCoordinator.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		0D0BCCA529BE3FBF004A4422 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0D0BCC8329BA011F004A4422 /* AuthService.swift */,
+				0D0BCCA629BE52EF004A4422 /* NetworkManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		0D0BCCA829BE5569004A4422 /* Context */ = {
+			isa = PBXGroup;
+			children = (
+				0D0BCCA929BE5572004A4422 /* AppContext.swift */,
+			);
+			path = Context;
+			sourceTree = "<group>";
+		};
+		0D0BCCAB29BE5985004A4422 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0D0BCCAF29BE730D004A4422 /* Asset.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0D0BCCAC29BE5BF8004A4422 /* TView */ = {
+			isa = PBXGroup;
+			children = (
+				0D0BCCAD29BE5C01004A4422 /* TView.swift */,
+			);
+			path = TView;
+			sourceTree = "<group>";
+		};
+		0D0BCCB329C0AC15004A4422 /* MockData */ = {
+			isa = PBXGroup;
+			children = (
+				0D0BCC8529BA065F004A4422 /* LoginCredentials.swift */,
+				0D0BCCB129C0A7ED004A4422 /* Coins.swift */,
+			);
+			path = MockData;
+			sourceTree = "<group>";
+		};
+		0D13FC4F29C0DA0300156378 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0D13FC5029C0DA0C00156378 /* TokenIconView.swift */,
+				0D13FC5229C19C9600156378 /* TokenSymbolNameView.swift */,
+				0D13FC5429C1AA9C00156378 /* TokenMarketDataView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0D13FC7129C5E02B00156378 /* TokenListSkeletonCell */ = {
+			isa = PBXGroup;
+			children = (
+				0D13FC7329C5E03900156378 /* TokenListSkeletonCell.swift */,
+			);
+			path = TokenListSkeletonCell;
+			sourceTree = "<group>";
+		};
+		0D13FC7929CB1AB800156378 /* TokenListTableViewToolbar */ = {
+			isa = PBXGroup;
+			children = (
+				0D13FC7A29CB1AC900156378 /* TokenListTableViewToolbar.swift */,
+			);
+			path = TokenListTableViewToolbar;
+			sourceTree = "<group>";
+		};
+		0D13FC8129CB286900156378 /* TokenListAccountView */ = {
+			isa = PBXGroup;
+			children = (
+				0DE2CD1929CC87BC0079325C /* Views */,
+				0D13FC7C29CB27F000156378 /* TokenListAccountView.swift */,
+				0D13FC8429CB409B00156378 /* TokenListAccountView+Model.swift */,
+			);
+			path = TokenListAccountView;
+			sourceTree = "<group>";
+		};
+		0D13FC8229CB289E00156378 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0D13FC7529CA48A400156378 /* SkeletonView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0D7FB54C29B7A86A00B735CC = {
+			isa = PBXGroup;
+			children = (
+				0D7FB55729B7A86A00B735CC /* TokenTicker */,
+				0D7FB55629B7A86A00B735CC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0D7FB55629B7A86A00B735CC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0D7FB55529B7A86A00B735CC /* TokenTicker.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0D7FB55729B7A86A00B735CC /* TokenTicker */ = {
+			isa = PBXGroup;
+			children = (
+				0D7FB55829B7A86A00B735CC /* AppDelegate.swift */,
+				0D7FB55A29B7A86A00B735CC /* SceneDelegate.swift */,
+				0D0BCCA029BB6413004A4422 /* Common */,
+				0D0BCC7829B8CB21004A4422 /* Helpers */,
+				0D0BCCAB29BE5985004A4422 /* Model */,
+				0D7FB56C29B7A8C600B735CC /* Authentication */,
+				0D0BCC8929BA0DF6004A4422 /* TokenList */,
+				0DC9705129CCEB4A00EB88E1 /* TokenDetails */,
+				0D7FB56129B7A86B00B735CC /* Assets.xcassets */,
+				0D7FB56329B7A86B00B735CC /* LaunchScreen.storyboard */,
+				0D7FB56629B7A86B00B735CC /* Info.plist */,
+			);
+			path = TokenTicker;
+			sourceTree = "<group>";
+		};
+		0D7FB56C29B7A8C600B735CC /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				0D7FB56D29B7A8D100B735CC /* Views */,
+				0D0BCC8729BA089F004A4422 /* AuthResources.swift */,
+				0D7FB57029B7A8FB00B735CC /* AuthViewModel.swift */,
+				0D7FB56E29B7A8DF00B735CC /* AuthViewController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		0D7FB56D29B7A8D100B735CC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0D0BCC6F29B7C581004A4422 /* AuthTextField.swift */,
+				0D0BCC7F29B9E147004A4422 /* AuthButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0DC9705129CCEB4A00EB88E1 /* TokenDetails */ = {
+			isa = PBXGroup;
+			children = (
+				0DC9705229CCEB5E00EB88E1 /* Views */,
+				0DC9705729CCEB8800EB88E1 /* TokenDetailsResources.swift */,
+				0DC9705529CCEB7E00EB88E1 /* TokenDetailsViewModel.swift */,
+				0DC9705329CCEB7100EB88E1 /* TokenDetailsViewController.swift */,
+			);
+			path = TokenDetails;
+			sourceTree = "<group>";
+		};
+		0DC9705229CCEB5E00EB88E1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0DE2CD1329CC33940079325C /* AccountIconView */ = {
+			isa = PBXGroup;
+			children = (
+				0DE2CD1429CC33B30079325C /* AccountIconView.swift */,
+			);
+			path = AccountIconView;
+			sourceTree = "<group>";
+		};
+		0DE2CD1629CC3F610079325C /* AccountLogoutButton */ = {
+			isa = PBXGroup;
+			children = (
+				0DE2CD1729CC3F720079325C /* AccountLogoutButton.swift */,
+			);
+			path = AccountLogoutButton;
+			sourceTree = "<group>";
+		};
+		0DE2CD1929CC87BC0079325C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0DE2CD1329CC33940079325C /* AccountIconView */,
+				0DE2CD1629CC3F610079325C /* AccountLogoutButton */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0DE2CD1B29CC8A860079325C /* TokenListBalanceView */ = {
+			isa = PBXGroup;
+			children = (
+				0DE2CD1C29CC8A920079325C /* TokenListBalanceView.swift */,
+			);
+			path = TokenListBalanceView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0D7FB55429B7A86A00B735CC /* TokenTicker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D7FB56929B7A86B00B735CC /* Build configuration list for PBXNativeTarget "TokenTicker" */;
+			buildPhases = (
+				0D7FB55129B7A86A00B735CC /* Sources */,
+				0D7FB55229B7A86A00B735CC /* Frameworks */,
+				0D7FB55329B7A86A00B735CC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TokenTicker;
+			packageProductDependencies = (
+				0D0BCC6829B7BD03004A4422 /* SnapKit */,
+			);
+			productName = TokenTicker;
+			productReference = 0D7FB55529B7A86A00B735CC /* TokenTicker.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0D7FB54D29B7A86A00B735CC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					0D7FB55429B7A86A00B735CC = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
+				};
+			};
+			buildConfigurationList = 0D7FB55029B7A86A00B735CC /* Build configuration list for PBXProject "TokenTicker" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0D7FB54C29B7A86A00B735CC;
+			packageReferences = (
+				0D0BCC6729B7BD03004A4422 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
+			productRefGroup = 0D7FB55629B7A86A00B735CC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0D7FB55429B7A86A00B735CC /* TokenTicker */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0D7FB55329B7A86A00B735CC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D7FB56529B7A86B00B735CC /* LaunchScreen.storyboard in Resources */,
+				0D7FB56229B7A86B00B735CC /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0D7FB55129B7A86A00B735CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DC9705429CCEB7100EB88E1 /* TokenDetailsViewController.swift in Sources */,
+				0D0BCCA729BE52EF004A4422 /* NetworkManager.swift in Sources */,
+				0D0BCCAA29BE5572004A4422 /* AppContext.swift in Sources */,
+				0D0BCC7729B89FB0004A4422 /* TStackView.swift in Sources */,
+				0D13FC5929C1E9DF00156378 /* NSAttributedString.swift in Sources */,
+				0D0BCC8229B9F8EC004A4422 /* MainCoordinator.swift in Sources */,
+				0D13FC7D29CB27F000156378 /* TokenListAccountView.swift in Sources */,
+				0DE2CD1829CC3F720079325C /* AccountLogoutButton.swift in Sources */,
+				0D13FC5329C19C9600156378 /* TokenSymbolNameView.swift in Sources */,
+				0D7FB56F29B7A8E000B735CC /* AuthViewController.swift in Sources */,
+				0D0BCC9729BA0E4D004A4422 /* TokenListCell.swift in Sources */,
+				0D0BCC7E29B8CB57004A4422 /* TButton.swift in Sources */,
+				0D0BCC7429B88EBC004A4422 /* TViewController.swift in Sources */,
+				0D0BCC8D29BA0E10004A4422 /* TokenListViewModel.swift in Sources */,
+				0D7FB55929B7A86A00B735CC /* AppDelegate.swift in Sources */,
+				0D0BCCA429BD06D7004A4422 /* UIResponder+Utils.swift in Sources */,
+				0D13FC7B29CB1AC900156378 /* TokenListTableViewToolbar.swift in Sources */,
+				0D0BCCAE29BE5C01004A4422 /* TView.swift in Sources */,
+				0D0BCC8429BA011F004A4422 /* AuthService.swift in Sources */,
+				0D0BCC9B29BA0E5F004A4422 /* TokenListCell+Model.swift in Sources */,
+				0D0BCCB029BE730D004A4422 /* Asset.swift in Sources */,
+				0D13FC8529CB409B00156378 /* TokenListAccountView+Model.swift in Sources */,
+				0D7FB57129B7A8FB00B735CC /* AuthViewModel.swift in Sources */,
+				0D13FC7429C5E03900156378 /* TokenListSkeletonCell.swift in Sources */,
+				0DC9705829CCEB8800EB88E1 /* TokenDetailsResources.swift in Sources */,
+				0D13FC6B29C4A87900156378 /* UITableView+AnimatedReloading.swift in Sources */,
+				0D0BCC9429BA0E3D004A4422 /* TokenListTableView.swift in Sources */,
+				0D0BCC8029B9E147004A4422 /* AuthButton.swift in Sources */,
+				0DE2CD1529CC33B30079325C /* AccountIconView.swift in Sources */,
+				0D0BCC8829BA089F004A4422 /* AuthResources.swift in Sources */,
+				0D13FC7629CA48A400156378 /* SkeletonView.swift in Sources */,
+				0D0BCC7B29B8CB37004A4422 /* UIButton+Title.swift in Sources */,
+				0D0BCCB229C0A7ED004A4422 /* Coins.swift in Sources */,
+				0D0BCC8F29BA0E1A004A4422 /* TokenListViewController.swift in Sources */,
+				0DC9705629CCEB7E00EB88E1 /* TokenDetailsViewModel.swift in Sources */,
+				0D0BCC8B29BA0E08004A4422 /* TokenListResources.swift in Sources */,
+				0DE2CD1D29CC8A920079325C /* TokenListBalanceView.swift in Sources */,
+				0D13FC5529C1AA9C00156378 /* TokenMarketDataView.swift in Sources */,
+				0D0BCC8629BA065F004A4422 /* LoginCredentials.swift in Sources */,
+				0D13FC5129C0DA0C00156378 /* TokenIconView.swift in Sources */,
+				0D13FC5729C1C68300156378 /* Double+ConvertToString.swift in Sources */,
+				0D0BCC7029B7C581004A4422 /* AuthTextField.swift in Sources */,
+				0D7FB55B29B7A86A00B735CC /* SceneDelegate.swift in Sources */,
+				0D7FB57329B7ABFC00B735CC /* TTextField.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0D7FB56329B7A86B00B735CC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0D7FB56429B7A86B00B735CC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0D7FB56729B7A86B00B735CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0D7FB56829B7A86B00B735CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0D7FB56A29B7A86B00B735CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FAD3VV45WY;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TokenTicker/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = co.katsubo.TokenTicker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0D7FB56B29B7A86B00B735CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FAD3VV45WY;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TokenTicker/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = co.katsubo.TokenTicker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0D7FB55029B7A86A00B735CC /* Build configuration list for PBXProject "TokenTicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D7FB56729B7A86B00B735CC /* Debug */,
+				0D7FB56829B7A86B00B735CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0D7FB56929B7A86B00B735CC /* Build configuration list for PBXNativeTarget "TokenTicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D7FB56A29B7A86B00B735CC /* Debug */,
+				0D7FB56B29B7A86B00B735CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0D0BCC6729B7BD03004A4422 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0D0BCC6829B7BD03004A4422 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0D0BCC6729B7BD03004A4422 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 0D7FB54D29B7A86A00B735CC /* Project object */;
+}
