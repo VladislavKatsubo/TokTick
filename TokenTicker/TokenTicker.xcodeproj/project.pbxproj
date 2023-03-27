@@ -51,6 +51,21 @@
 		0DC9705429CCEB7100EB88E1 /* TokenDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC9705329CCEB7100EB88E1 /* TokenDetailsViewController.swift */; };
 		0DC9705629CCEB7E00EB88E1 /* TokenDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC9705529CCEB7E00EB88E1 /* TokenDetailsViewModel.swift */; };
 		0DC9705829CCEB8800EB88E1 /* TokenDetailsResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC9705729CCEB8800EB88E1 /* TokenDetailsResources.swift */; };
+		0DC9705B29CDB8DB00EB88E1 /* TokenDetailsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC9705A29CDB8DB00EB88E1 /* TokenDetailsCollectionView.swift */; };
+		0DC9705E29CDB8F100EB88E1 /* TokenDetailsCollectionViewCurrentInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC9705D29CDB8F100EB88E1 /* TokenDetailsCollectionViewCurrentInfoCell.swift */; };
+		0DC9706029CDB90200EB88E1 /* TokenDetailsCollectionViewStatisticsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC9705F29CDB90200EB88E1 /* TokenDetailsCollectionViewStatisticsCell.swift */; };
+		0DC9706229CDB91100EB88E1 /* TokenDetailsCollectionViewAdditionalInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC9706129CDB91100EB88E1 /* TokenDetailsCollectionViewAdditionalInfoCell.swift */; };
+		0DC9706A29CDCA6700EB88E1 /* TCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC9706929CDCA6700EB88E1 /* TCollectionView.swift */; };
+		0DC9706C29CDCADD00EB88E1 /* TCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC9706B29CDCADD00EB88E1 /* TCollectionViewCell.swift */; };
+		0DC9706E29CE2C5C00EB88E1 /* StatisticsCellBorderDecorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC9706D29CE2C5C00EB88E1 /* StatisticsCellBorderDecorationView.swift */; };
+		0DC9707029CF3F6300EB88E1 /* FloatingPoint+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC9706F29CF3F6300EB88E1 /* FloatingPoint+Currency.swift */; };
+		0DC9707429CF5BA600EB88E1 /* TokenDetailsCollectionViewStatisticsCell+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC9707329CF5BA600EB88E1 /* TokenDetailsCollectionViewStatisticsCell+Model.swift */; };
+		0DC9707629CF6C0600EB88E1 /* TokenDetailsCollectionView+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC9707529CF6C0500EB88E1 /* TokenDetailsCollectionView+Model.swift */; };
+		0DC9707929CF6C7500EB88E1 /* TokenDetailsCollectionViewCurrentInfoCell+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC9707829CF6C7500EB88E1 /* TokenDetailsCollectionViewCurrentInfoCell+Model.swift */; };
+		0DC9707C29CF6C8900EB88E1 /* TokenDetailsCollectionViewAdditionalInfoCell+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC9707B29CF6C8900EB88E1 /* TokenDetailsCollectionViewAdditionalInfoCell+Model.swift */; };
+		0DC9707E29D09D7B00EB88E1 /* Double+Abbreviated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC9707D29D09D7B00EB88E1 /* Double+Abbreviated.swift */; };
+		0DC9708929D1920F00EB88E1 /* AdditionalInfoCellBorderDecorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC9708829D1920F00EB88E1 /* AdditionalInfoCellBorderDecorationView.swift */; };
+		0DC9708C29D19C5F00EB88E1 /* StatisticsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC9708B29D19C5F00EB88E1 /* StatisticsSectionHeaderView.swift */; };
 		0DE2CD1529CC33B30079325C /* AccountIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE2CD1429CC33B30079325C /* AccountIconView.swift */; };
 		0DE2CD1829CC3F720079325C /* AccountLogoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE2CD1729CC3F720079325C /* AccountLogoutButton.swift */; };
 		0DE2CD1D29CC8A920079325C /* TokenListBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE2CD1C29CC8A920079325C /* TokenListBalanceView.swift */; };
@@ -102,6 +117,21 @@
 		0DC9705329CCEB7100EB88E1 /* TokenDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDetailsViewController.swift; sourceTree = "<group>"; };
 		0DC9705529CCEB7E00EB88E1 /* TokenDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDetailsViewModel.swift; sourceTree = "<group>"; };
 		0DC9705729CCEB8800EB88E1 /* TokenDetailsResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDetailsResources.swift; sourceTree = "<group>"; };
+		0DC9705A29CDB8DB00EB88E1 /* TokenDetailsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDetailsCollectionView.swift; sourceTree = "<group>"; };
+		0DC9705D29CDB8F100EB88E1 /* TokenDetailsCollectionViewCurrentInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDetailsCollectionViewCurrentInfoCell.swift; sourceTree = "<group>"; };
+		0DC9705F29CDB90200EB88E1 /* TokenDetailsCollectionViewStatisticsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDetailsCollectionViewStatisticsCell.swift; sourceTree = "<group>"; };
+		0DC9706129CDB91100EB88E1 /* TokenDetailsCollectionViewAdditionalInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDetailsCollectionViewAdditionalInfoCell.swift; sourceTree = "<group>"; };
+		0DC9706929CDCA6700EB88E1 /* TCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCollectionView.swift; sourceTree = "<group>"; };
+		0DC9706B29CDCADD00EB88E1 /* TCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCollectionViewCell.swift; sourceTree = "<group>"; };
+		0DC9706D29CE2C5C00EB88E1 /* StatisticsCellBorderDecorationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsCellBorderDecorationView.swift; sourceTree = "<group>"; };
+		0DC9706F29CF3F6300EB88E1 /* FloatingPoint+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingPoint+Currency.swift"; sourceTree = "<group>"; };
+		0DC9707329CF5BA600EB88E1 /* TokenDetailsCollectionViewStatisticsCell+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TokenDetailsCollectionViewStatisticsCell+Model.swift"; sourceTree = "<group>"; };
+		0DC9707529CF6C0500EB88E1 /* TokenDetailsCollectionView+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TokenDetailsCollectionView+Model.swift"; sourceTree = "<group>"; };
+		0DC9707829CF6C7500EB88E1 /* TokenDetailsCollectionViewCurrentInfoCell+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TokenDetailsCollectionViewCurrentInfoCell+Model.swift"; sourceTree = "<group>"; };
+		0DC9707B29CF6C8900EB88E1 /* TokenDetailsCollectionViewAdditionalInfoCell+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TokenDetailsCollectionViewAdditionalInfoCell+Model.swift"; sourceTree = "<group>"; };
+		0DC9707D29D09D7B00EB88E1 /* Double+Abbreviated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Abbreviated.swift"; sourceTree = "<group>"; };
+		0DC9708829D1920F00EB88E1 /* AdditionalInfoCellBorderDecorationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalInfoCellBorderDecorationView.swift; sourceTree = "<group>"; };
+		0DC9708B29D19C5F00EB88E1 /* StatisticsSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsSectionHeaderView.swift; sourceTree = "<group>"; };
 		0DE2CD1429CC33B30079325C /* AccountIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountIconView.swift; sourceTree = "<group>"; };
 		0DE2CD1729CC3F720079325C /* AccountLogoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountLogoutButton.swift; sourceTree = "<group>"; };
 		0DE2CD1C29CC8A920079325C /* TokenListBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenListBalanceView.swift; sourceTree = "<group>"; };
@@ -160,6 +190,8 @@
 				0D13FC5629C1C68300156378 /* Double+ConvertToString.swift */,
 				0D13FC5829C1E9DF00156378 /* NSAttributedString.swift */,
 				0D13FC6A29C4A87900156378 /* UITableView+AnimatedReloading.swift */,
+				0DC9706F29CF3F6300EB88E1 /* FloatingPoint+Currency.swift */,
+				0DC9707D29D09D7B00EB88E1 /* Double+Abbreviated.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -229,6 +261,7 @@
 		0D0BCCA129BB6418004A4422 /* TViews */ = {
 			isa = PBXGroup;
 			children = (
+				0DC9706729CDCA5500EB88E1 /* TCollectionView */,
 				0D0BCC7229B88EB1004A4422 /* TViewController */,
 				0D0BCC7129B88E9C004A4422 /* TTextField */,
 				0D0BCC7529B89F96004A4422 /* TStackView */,
@@ -267,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				0D0BCCAF29BE730D004A4422 /* Asset.swift */,
+				0D0BCCB129C0A7ED004A4422 /* Coins.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -283,7 +317,6 @@
 			isa = PBXGroup;
 			children = (
 				0D0BCC8529BA065F004A4422 /* LoginCredentials.swift */,
-				0D0BCCB129C0A7ED004A4422 /* Coins.swift */,
 			);
 			path = MockData;
 			sourceTree = "<group>";
@@ -400,31 +433,107 @@
 		0DC9705229CCEB5E00EB88E1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0DC9705929CDB8C700EB88E1 /* TokenDetailsCollectionView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		0DE2CD1329CC33940079325C /* AccountIconView */ = {
+		0DC9705929CDB8C700EB88E1 /* TokenDetailsCollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				0DE2CD1429CC33B30079325C /* AccountIconView.swift */,
+				0DC9707129CF5AD300EB88E1 /* Views */,
+				0DC9705C29CDB8DD00EB88E1 /* TokenDetailsCollectionViewCells */,
+				0DC9705A29CDB8DB00EB88E1 /* TokenDetailsCollectionView.swift */,
+				0DC9707529CF6C0500EB88E1 /* TokenDetailsCollectionView+Model.swift */,
 			);
-			path = AccountIconView;
+			path = TokenDetailsCollectionView;
 			sourceTree = "<group>";
 		};
-		0DE2CD1629CC3F610079325C /* AccountLogoutButton */ = {
+		0DC9705C29CDB8DD00EB88E1 /* TokenDetailsCollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
-				0DE2CD1729CC3F720079325C /* AccountLogoutButton.swift */,
+				0DC9707729CF6C6200EB88E1 /* TokenDetailsCollectionViewCurrentInfoCell */,
+				0DC9707229CF5B9C00EB88E1 /* TokenDetailsCollectionViewStatisticsCell */,
+				0DC9707A29CF6C7E00EB88E1 /* TokenDetailsCollectionViewAdditionalInfoCell */,
 			);
-			path = AccountLogoutButton;
+			path = TokenDetailsCollectionViewCells;
+			sourceTree = "<group>";
+		};
+		0DC9706729CDCA5500EB88E1 /* TCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				0DC9706829CDCA5C00EB88E1 /* TCollectionViewCell */,
+				0DC9706929CDCA6700EB88E1 /* TCollectionView.swift */,
+			);
+			path = TCollectionView;
+			sourceTree = "<group>";
+		};
+		0DC9706829CDCA5C00EB88E1 /* TCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0DC9706B29CDCADD00EB88E1 /* TCollectionViewCell.swift */,
+			);
+			path = TCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		0DC9707129CF5AD300EB88E1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0DC9708A29D19C4100EB88E1 /* SectionHeader */,
+				0DC9708729D191F500EB88E1 /* SectionDecorationItems */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0DC9707229CF5B9C00EB88E1 /* TokenDetailsCollectionViewStatisticsCell */ = {
+			isa = PBXGroup;
+			children = (
+				0DC9705F29CDB90200EB88E1 /* TokenDetailsCollectionViewStatisticsCell.swift */,
+				0DC9707329CF5BA600EB88E1 /* TokenDetailsCollectionViewStatisticsCell+Model.swift */,
+			);
+			path = TokenDetailsCollectionViewStatisticsCell;
+			sourceTree = "<group>";
+		};
+		0DC9707729CF6C6200EB88E1 /* TokenDetailsCollectionViewCurrentInfoCell */ = {
+			isa = PBXGroup;
+			children = (
+				0DC9705D29CDB8F100EB88E1 /* TokenDetailsCollectionViewCurrentInfoCell.swift */,
+				0DC9707829CF6C7500EB88E1 /* TokenDetailsCollectionViewCurrentInfoCell+Model.swift */,
+			);
+			path = TokenDetailsCollectionViewCurrentInfoCell;
+			sourceTree = "<group>";
+		};
+		0DC9707A29CF6C7E00EB88E1 /* TokenDetailsCollectionViewAdditionalInfoCell */ = {
+			isa = PBXGroup;
+			children = (
+				0DC9706129CDB91100EB88E1 /* TokenDetailsCollectionViewAdditionalInfoCell.swift */,
+				0DC9707B29CF6C8900EB88E1 /* TokenDetailsCollectionViewAdditionalInfoCell+Model.swift */,
+			);
+			path = TokenDetailsCollectionViewAdditionalInfoCell;
+			sourceTree = "<group>";
+		};
+		0DC9708729D191F500EB88E1 /* SectionDecorationItems */ = {
+			isa = PBXGroup;
+			children = (
+				0DC9706D29CE2C5C00EB88E1 /* StatisticsCellBorderDecorationView.swift */,
+				0DC9708829D1920F00EB88E1 /* AdditionalInfoCellBorderDecorationView.swift */,
+			);
+			path = SectionDecorationItems;
+			sourceTree = "<group>";
+		};
+		0DC9708A29D19C4100EB88E1 /* SectionHeader */ = {
+			isa = PBXGroup;
+			children = (
+				0DC9708B29D19C5F00EB88E1 /* StatisticsSectionHeaderView.swift */,
+			);
+			path = SectionHeader;
 			sourceTree = "<group>";
 		};
 		0DE2CD1929CC87BC0079325C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0DE2CD1329CC33940079325C /* AccountIconView */,
-				0DE2CD1629CC3F610079325C /* AccountLogoutButton */,
+				0DE2CD1429CC33B30079325C /* AccountIconView.swift */,
+				0DE2CD1729CC3F720079325C /* AccountLogoutButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -513,21 +622,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DC9705B29CDB8DB00EB88E1 /* TokenDetailsCollectionView.swift in Sources */,
 				0DC9705429CCEB7100EB88E1 /* TokenDetailsViewController.swift in Sources */,
 				0D0BCCA729BE52EF004A4422 /* NetworkManager.swift in Sources */,
 				0D0BCCAA29BE5572004A4422 /* AppContext.swift in Sources */,
 				0D0BCC7729B89FB0004A4422 /* TStackView.swift in Sources */,
 				0D13FC5929C1E9DF00156378 /* NSAttributedString.swift in Sources */,
+				0DC9706029CDB90200EB88E1 /* TokenDetailsCollectionViewStatisticsCell.swift in Sources */,
 				0D0BCC8229B9F8EC004A4422 /* MainCoordinator.swift in Sources */,
 				0D13FC7D29CB27F000156378 /* TokenListAccountView.swift in Sources */,
 				0DE2CD1829CC3F720079325C /* AccountLogoutButton.swift in Sources */,
 				0D13FC5329C19C9600156378 /* TokenSymbolNameView.swift in Sources */,
+				0DC9707029CF3F6300EB88E1 /* FloatingPoint+Currency.swift in Sources */,
 				0D7FB56F29B7A8E000B735CC /* AuthViewController.swift in Sources */,
 				0D0BCC9729BA0E4D004A4422 /* TokenListCell.swift in Sources */,
 				0D0BCC7E29B8CB57004A4422 /* TButton.swift in Sources */,
+				0DC9707629CF6C0600EB88E1 /* TokenDetailsCollectionView+Model.swift in Sources */,
 				0D0BCC7429B88EBC004A4422 /* TViewController.swift in Sources */,
 				0D0BCC8D29BA0E10004A4422 /* TokenListViewModel.swift in Sources */,
+				0DC9707C29CF6C8900EB88E1 /* TokenDetailsCollectionViewAdditionalInfoCell+Model.swift in Sources */,
 				0D7FB55929B7A86A00B735CC /* AppDelegate.swift in Sources */,
+				0DC9706C29CDCADD00EB88E1 /* TCollectionViewCell.swift in Sources */,
 				0D0BCCA429BD06D7004A4422 /* UIResponder+Utils.swift in Sources */,
 				0D13FC7B29CB1AC900156378 /* TokenListTableViewToolbar.swift in Sources */,
 				0D0BCCAE29BE5C01004A4422 /* TView.swift in Sources */,
@@ -538,23 +653,32 @@
 				0D7FB57129B7A8FB00B735CC /* AuthViewModel.swift in Sources */,
 				0D13FC7429C5E03900156378 /* TokenListSkeletonCell.swift in Sources */,
 				0DC9705829CCEB8800EB88E1 /* TokenDetailsResources.swift in Sources */,
+				0DC9707E29D09D7B00EB88E1 /* Double+Abbreviated.swift in Sources */,
 				0D13FC6B29C4A87900156378 /* UITableView+AnimatedReloading.swift in Sources */,
 				0D0BCC9429BA0E3D004A4422 /* TokenListTableView.swift in Sources */,
 				0D0BCC8029B9E147004A4422 /* AuthButton.swift in Sources */,
 				0DE2CD1529CC33B30079325C /* AccountIconView.swift in Sources */,
 				0D0BCC8829BA089F004A4422 /* AuthResources.swift in Sources */,
+				0DC9707429CF5BA600EB88E1 /* TokenDetailsCollectionViewStatisticsCell+Model.swift in Sources */,
+				0DC9706229CDB91100EB88E1 /* TokenDetailsCollectionViewAdditionalInfoCell.swift in Sources */,
+				0DC9708929D1920F00EB88E1 /* AdditionalInfoCellBorderDecorationView.swift in Sources */,
 				0D13FC7629CA48A400156378 /* SkeletonView.swift in Sources */,
 				0D0BCC7B29B8CB37004A4422 /* UIButton+Title.swift in Sources */,
 				0D0BCCB229C0A7ED004A4422 /* Coins.swift in Sources */,
+				0DC9706A29CDCA6700EB88E1 /* TCollectionView.swift in Sources */,
+				0DC9707929CF6C7500EB88E1 /* TokenDetailsCollectionViewCurrentInfoCell+Model.swift in Sources */,
 				0D0BCC8F29BA0E1A004A4422 /* TokenListViewController.swift in Sources */,
 				0DC9705629CCEB7E00EB88E1 /* TokenDetailsViewModel.swift in Sources */,
+				0DC9708C29D19C5F00EB88E1 /* StatisticsSectionHeaderView.swift in Sources */,
 				0D0BCC8B29BA0E08004A4422 /* TokenListResources.swift in Sources */,
 				0DE2CD1D29CC8A920079325C /* TokenListBalanceView.swift in Sources */,
+				0DC9705E29CDB8F100EB88E1 /* TokenDetailsCollectionViewCurrentInfoCell.swift in Sources */,
 				0D13FC5529C1AA9C00156378 /* TokenMarketDataView.swift in Sources */,
 				0D0BCC8629BA065F004A4422 /* LoginCredentials.swift in Sources */,
 				0D13FC5129C0DA0C00156378 /* TokenIconView.swift in Sources */,
 				0D13FC5729C1C68300156378 /* Double+ConvertToString.swift in Sources */,
 				0D0BCC7029B7C581004A4422 /* AuthTextField.swift in Sources */,
+				0DC9706E29CE2C5C00EB88E1 /* StatisticsCellBorderDecorationView.swift in Sources */,
 				0D7FB55B29B7A86A00B735CC /* SceneDelegate.swift in Sources */,
 				0D7FB57329B7ABFC00B735CC /* TTextField.swift in Sources */,
 			);

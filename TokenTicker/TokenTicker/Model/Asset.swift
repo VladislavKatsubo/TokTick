@@ -22,12 +22,42 @@ struct Asset: Decodable, Equatable {
         let name: String
         let symbol: String
         let marketData: MarketData
+        let allTimeHigh: AllTimeHigh
+        let marketcap: Marketcap
+        let roiData: RoiData
+        let supply: Supply
 
         struct MarketData: Decodable, Equatable {
             
             let priceUsd: Double?
             let percentChangeUsdLast1Hour: Double?
             let percentChangeUsdLast24Hours: Double?
+            let volumeLast24Hours: Double?
+            let ohlcvLast1Hour: OHLCVLastHour
+
+            struct OHLCVLastHour: Decodable, Equatable {
+                let open: Double?
+                let high: Double?
+                let low: Double?
+                let close: Double?
+                let volume: Double?
+            }
+        }
+
+        struct AllTimeHigh: Decodable, Equatable {
+            let price: Double?
+        }
+
+        struct Marketcap: Decodable, Equatable {
+            let currentMarketcapUsd: Double?
+        }
+
+        struct RoiData: Decodable, Equatable {
+            let percentChangeLast1Month: Double?
+        }
+
+        struct Supply: Decodable, Equatable {
+            let circulating: Double?
         }
     }
 }

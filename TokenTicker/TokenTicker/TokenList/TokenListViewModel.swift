@@ -10,12 +10,11 @@ import Foundation
 protocol TokenListViewModelProtocol {
     func launch()
     func logout()
-    func fetchAllCoinsData(completion: @escaping ([Asset]) -> Void)
     func sort(option: TokenListViewModel.SortingOptions, ascending: Bool)
     func showDetails(for coin: Asset)
 
 
-
+    var onFetchCoins: (([Asset]) -> Void)? { get set }
     var onSort: (([IndexPath: IndexPath]) -> Void)? { get set }
     var onMockTokenListView: (() -> Void)? { get set }
     var onAssetTableLabel: ((String) -> Void)? { get set }
@@ -32,6 +31,7 @@ final class TokenListViewModel: TokenListViewModelProtocol {
 
     private var coinsData: [Asset] = []
 
+    var onFetchCoins: (([Asset]) -> Void)?
     var onSort: (([IndexPath: IndexPath]) -> Void)?
     var onMockTokenListView: (() -> Void)?
     var onAssetTableLabel: ((String) -> Void)?
@@ -46,49 +46,46 @@ final class TokenListViewModel: TokenListViewModelProtocol {
 
     // MARK: - Public methods
     func launch() {
+        fetchAllCoinsData()
         setupTableViewMockData()
-        setupAssetTableLable()
         setupAccountView()
-        setupBalanceView()
+//        mockBalanceViewLabelLoading()
+//        mockAssetTableLabelLoading()
     }
 
-    func fetchAllCoinsData(completion: @escaping ([Asset]) -> Void) {
-        let assets: [Asset] = [
-            Asset(data: Asset.AssetData(name: "Bitcoin", symbol: "BTC", marketData: Asset.AssetData.MarketData(priceUsd: 25000.921529520783, percentChangeUsdLast1Hour: 1.2990327694951016, percentChangeUsdLast24Hours: 23.57694951))),
-            Asset(data: Asset.AssetData(name: "Ethereum", symbol: "ETH", marketData: Asset.AssetData.MarketData(priceUsd: 2500.921529520783, percentChangeUsdLast1Hour: -1.2990327694951016, percentChangeUsdLast24Hours: -3.57694951))),
-            Asset(data: Asset.AssetData(name: "Tron", symbol: "TRX", marketData: Asset.AssetData.MarketData(priceUsd: 25.921529520783, percentChangeUsdLast1Hour: 0, percentChangeUsdLast24Hours: 13.57694951))),
-            Asset(data: Asset.AssetData(name: "Luna", symbol: "LUNA", marketData: Asset.AssetData.MarketData(priceUsd: 250.921529520783, percentChangeUsdLast1Hour: 2.2990327694951016, percentChangeUsdLast24Hours: -33.57694951))),
-            Asset(data: Asset.AssetData(name: "Polkadot", symbol: "DOT", marketData: Asset.AssetData.MarketData(priceUsd: 2500.921529520783, percentChangeUsdLast1Hour: 4.2990327694951016, percentChangeUsdLast24Hours: 43.57694951))),
-            Asset(data: Asset.AssetData(name: "Cordana", symbol: "ADA", marketData: Asset.AssetData.MarketData(priceUsd: 5.921529520783, percentChangeUsdLast1Hour: 3.2990327694951016, percentChangeUsdLast24Hours: -333.57694951)))
-        ]
-        coinsData = assets
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4) { [weak self] in
+    func fetchAllCoinsData() {
+//        coinsData = Constants.assets
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
+//            guard let self = self else { return }
+//            self.onFetchCoins?(self.coinsData)
+//        }
+        let group = DispatchGroup()
+
+        Coins.allCases.forEach({ [weak self] in
+            guard let url = $0.url else { return }
+            group.enter()
+            self?.appContext.networkManager.fetchData(url: url, expecting: Asset.self, completion: { result in
+                defer { group.leave()}
+                switch result {
+                case .success(let coinData):
+                    self?.coinsData.append(coinData)
+                case .failure(let error):
+                    print(error)
+                }
+            })
+        })
+
+        group.notify(queue: .main) { [weak self] in
             guard let self = self else { return }
-            completion(self.coinsData)
+
+            self.onFetchCoins?(self.coinsData)
+            self.onAssetTableLabel?("\(String(describing: self.coinsData.count)) Assets")
+            self.onBalanceView?(Constants.mockUserModel.balance)
         }
-        //        let group = DispatchGroup()
-        //
-        //        Coins.allCases.forEach({ [weak self] in
-        //            guard let url = $0.url else { return }
-        //            group.enter()
-        //            self?.appContext.networkManager.fetchData(url: url, expecting: Asset.self, completion: { result in
-        //                defer { group.leave()}
-        //                switch result {
-        //                case .success(let coinData):
-        //                    self?.coinsData.append(coinData)
-        //                case .failure(let error):
-        //                    print(error)
-        //                }
-        //            })
-        //        })
-        //
-        //        group.notify(queue: .main) { [weak self] in
-        //            completion(self?.coinsData ?? [])
-        //        }
     }
 
-    func showDetails(for coin: Asset) {
-        print(coin.data.name)
+    func showDetails(for token: Asset) {
+        self.coordinator.showDetailScreen(for: token)
     }
 
     func logout() {
@@ -133,21 +130,21 @@ private extension TokenListViewModel {
         onMockTokenListView?()
     }
 
-    func setupAssetTableLable() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4) { [weak self] in
+    func mockAssetTableLabelLoading() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
             guard let self = self else { return }
             self.onAssetTableLabel?("\(self.coinsData.count) Assets")
         }
     }
 
-    func setupAccountView() {
-        onAccountView?(Constants.mockUserModel)
-    }
-
-    func setupBalanceView() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4) { [weak self] in
+    func mockBalanceViewLabelLoading() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
             self?.onBalanceView?(Constants.mockUserModel.balance)
         }
+    }
+
+    func setupAccountView() {
+        onAccountView?(Constants.mockUserModel)
     }
 }
 

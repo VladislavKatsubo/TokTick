@@ -31,13 +31,10 @@ final class TokenMarketDataView: TView {
         let percentChangeLast1Hour = coin.data.marketData.percentChangeUsdLast1Hour
         let percentChangeLast24Hour = coin.data.marketData.percentChangeUsdLast24Hours
 
-        self.usdPriceLabel.text = "$" + (usdPrice?.convertToString(withDecimalPoints: 2) ?? "N/A")
+        self.usdPriceLabel.text = usdPrice?.formatAsCurrency()
 
-        let percentChangeLast1HourColor = percentChangeLast1Hour ?? 0 > 0 ? UIColor.systemGreen : UIColor.systemRed
-        let percentChangeLast24HourColor = percentChangeLast24Hour ?? 0 > 0 ? UIColor.systemGreen : UIColor.systemRed
-
-        let percentChangeLast1HourText = NSAttributedString(percentChange: percentChangeLast1Hour, prefix: "h: ", color: percentChangeLast1HourColor)
-        let percentChangeLast24HourText = NSAttributedString(percentChange: percentChangeLast24Hour, prefix: "d: ", color: percentChangeLast24HourColor)
+        let percentChangeLast1HourText = NSAttributedString(percentChange: percentChangeLast1Hour, prefix: "h: ")
+        let percentChangeLast24HourText = NSAttributedString(percentChange: percentChangeLast24Hour, prefix: "d: ")
 
         self.percentChangeLast1HourLabel.attributedText = percentChangeLast1HourText
         self.percentChangeLast24HourLabel.attributedText = percentChangeLast24HourText

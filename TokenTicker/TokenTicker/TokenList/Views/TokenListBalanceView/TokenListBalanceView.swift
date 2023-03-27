@@ -34,7 +34,7 @@ final class TokenListBalanceView: TView {
             self.skeletonLabelView.alpha = 0.0
             self.balanceLabel.alpha = 0.0
         }) { _ in
-            self.balanceLabel.text = self.configureBalanceLabelText(for: balance)
+            self.balanceLabel.text = balance.formatAsCurrency()
             self.skeletonLabelView.stopShimmering()
             self.skeletonLabelView.isHidden = true
             self.balanceLabel.isHidden = false
@@ -91,19 +91,5 @@ private extension TokenListBalanceView {
             make.width.equalTo(Constants.skeletonBalanceViewSize.width)
             make.height.equalTo(Constants.skeletonBalanceViewSize.height)
         }
-    }
-
-    func configureBalanceLabelText(for balance: Double) -> String? {
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .currency
-        numberFormatter.currencySymbol = "$"
-        numberFormatter.maximumFractionDigits = 2
-        numberFormatter.minimumFractionDigits = 0
-
-        guard let balanceString = numberFormatter.string(from: NSNumber(floatLiteral: balance)) else { return nil }
-
-        let formattedString = "$ " + balanceString.replacingOccurrences(of: numberFormatter.currencySymbol, with: "")
-
-        return formattedString
     }
 }

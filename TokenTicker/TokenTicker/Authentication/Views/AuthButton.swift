@@ -51,5 +51,8 @@ private extension AuthButton {
         titleLabel?.font = Constants.font
         titleColor = Constants.titleColor
         title = Constants.title
+        self.snp.makeConstraints { make in
+            make.height.equalTo(50.0)
+        }
     }
 }

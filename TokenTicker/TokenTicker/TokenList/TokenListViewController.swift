@@ -40,6 +40,9 @@ private extension TokenListViewController {
             self?.tableViewToolBar.mockfigure()
             self?.balanceView.mockfigure()
         }
+        self.viewModel?.onFetchCoins = { [weak self] coins in
+            self?.tableView.configure(with: coins)
+        }
         self.viewModel?.onAccountView = { [weak self] model in
             self?.accountView.configure(with: model)
         }
@@ -49,9 +52,6 @@ private extension TokenListViewController {
         self.viewModel?.onAssetTableLabel = { [weak self] labelText in
             self?.tableViewToolBar.configure(with: labelText)
         }
-        self.viewModel?.fetchAllCoinsData(completion: { [weak self] coins in
-            self?.tableView.configure(with: coins)
-        })
         self.viewModel?.onSort = { [weak self] newIndicies in
             self?.tableView.animateSorting(newIndexMapping: newIndicies)
         }

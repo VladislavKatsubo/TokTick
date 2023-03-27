@@ -12,6 +12,7 @@ final class AuthViewController: TViewController {
 
     typealias Constants = AuthResources.Constants.UI
 
+    private let logoImageView = UIImageView()
     private let stackView = TStackView(axis: .vertical, spacing: Constants.stackViewSpacing)
     private let loginTextField = AuthTextField()
     private let passwordTextField = AuthTextField()
@@ -45,13 +46,23 @@ private extension AuthViewController {
 
     func setupItems() {
         setupStackView()
+        setupLogoImageView()
         setupLoginTextField()
         setupPasswordTextField()
         setupButton()
     }
 
+    func setupLogoImageView() {
+        logoImageView.image = .init(systemName: "bitcoinsign.circle.fill")?.withTintColor(.black, renderingMode: .alwaysOriginal)
+        logoImageView.snp.makeConstraints { make in
+            make.width.equalTo(150.0)
+            make.height.equalTo(logoImageView.snp.width)
+        }
+    }
+
     func setupStackView() {
         view.addSubview(stackView)
+        stackView.addArrangedSubview(logoImageView)
         stackView.addArrangedSubview(loginTextField)
         stackView.addArrangedSubview(passwordTextField)
         stackView.addArrangedSubview(loginButton)

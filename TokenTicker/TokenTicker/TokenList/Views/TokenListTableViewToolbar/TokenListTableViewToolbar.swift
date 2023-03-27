@@ -11,6 +11,9 @@ final class TokenListTableViewToolbar: TView {
     private enum Constants {
         static let labelHeight: CGFloat = 20.0
         static let labelWidth: CGFloat = 70.0
+        static let font: UIFont = .systemFont(ofSize: labelHeight, weight: .semibold)
+        static let leadingOffset: CGFloat = 20.0
+        static let trailingInset: CGFloat = 20.0
     }
 
     private let label = UILabel()
@@ -55,10 +58,10 @@ private extension TokenListTableViewToolbar {
 
     func setupLabel() {
         addSubview(label)
-        label.font = .systemFont(ofSize: Constants.labelHeight, weight: .semibold)
+        label.font = Constants.font
         label.snp.makeConstraints { make in
             make.top.trailing.bottom.equalToSuperview()
-            make.leading.equalToSuperview().offset(20.0)
+            make.leading.equalToSuperview().offset(Constants.leadingOffset)
         }
     }
 
@@ -66,7 +69,7 @@ private extension TokenListTableViewToolbar {
         addSubview(skeletonLabelView)
         skeletonLabelView.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
-            make.leading.equalToSuperview().offset(20.0)
+            make.leading.equalToSuperview().offset(Constants.leadingOffset)
             make.height.equalTo(Constants.labelHeight)
             make.width.equalTo(Constants.labelWidth)
         }
@@ -80,7 +83,7 @@ private extension TokenListTableViewToolbar {
         sortButton.setImage(UIImage(systemName: "arrow.up.arrow.down")?.withTintColor(.black, renderingMode: .alwaysOriginal), for: .normal)
         sortButton.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
-            make.trailing.equalToSuperview().inset(20.0)
+            make.trailing.equalToSuperview().inset(Constants.trailingInset)
         }
     }
 }

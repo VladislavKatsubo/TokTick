@@ -12,12 +12,14 @@ protocol Coordinator: AnyObject {
     func logout()
     func showLoginScreen()
     func showMainScreen()
+    func showDetailScreen(for token: Asset)
 }
 
 final class MainCoordinator: Coordinator {
 
     let window: UIWindow
     let authService: UserDefaultsAuthService
+    var navigationController: UINavigationController?
 
     init(window: UIWindow, authService: UserDefaultsAuthService) {
         self.window = window
@@ -25,12 +27,11 @@ final class MainCoordinator: Coordinator {
     }
 
     func start() {
-        //        guard authService.isLoggedIn() else {
-        //            showLoginScreen()
-        //            return
-        //        }
-        //        showMainScreen()
-        showLoginScreen()
+        guard authService.isLoggedIn() else {
+            showLoginScreen()
+            return
+        }
+        showMainScreen()
     }
 
     func logout() {
@@ -54,17 +55,18 @@ final class MainCoordinator: Coordinator {
         let viewModel = TokenListViewModel(coordinator: self, appContext: appContext)
         let viewController = TokenListViewController()
         viewController.configure(viewModel: viewModel)
-        
-        window.rootViewController = viewController
+
+        navigationController = UINavigationController(rootViewController: viewController)
+
+        window.rootViewController = navigationController
         window.makeKeyAndVisible()
     }
 
-//    func showTokenDetail(for token: Asset) {
-//        let viewModel = TokenDetailViewModel(appContext: appContext, token: token)
-//        let viewController = TokenDetailViewController()
-//        viewController.configure(viewModel: viewModel)
-//        viewModel.coordinator = self
-//
-//        navigationController?.pushViewController(viewController, animated: true)
-//    }
+    func showDetailScreen(for token: Asset) {
+        let viewModel = TokenDetailsViewModel(token: token)
+        let viewController = TokenDetailsViewController()
+        viewController.configure(viewModel: viewModel)
+
+        navigationController?.pushViewController(viewController, animated: true)
+    }
 }

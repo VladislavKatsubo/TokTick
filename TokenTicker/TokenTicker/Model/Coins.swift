@@ -11,7 +11,7 @@ enum Coins: String, Equatable, CaseIterable {
     case btc
     case eth
     case trx
-    case luna
+    case sol
     case dot
     case doge
     case usdt
@@ -24,15 +24,15 @@ enum Coins: String, Equatable, CaseIterable {
 
     private var endpoint: String {
         switch self {
-        case .btc: return  "btc"
-        case .eth: return  "eth"
-        case .trx: return  "tron"
-        case .luna: return  "luna"
-        case .dot: return  "polkadot"
-        case .doge: return  "dogecoin"
-        case .usdt: return  "tether"
-        case .xlm: return  "stellar"
-        case .ada: return  "cardano"
+        case .btc: return "btc"
+        case .eth: return "eth"
+        case .trx: return "tron"
+        case .sol: return "solana"
+        case .dot: return "polkadot"
+        case .doge: return "dogecoin"
+        case .usdt: return "tether"
+        case .xlm: return "stellar"
+        case .ada: return "cardano"
         }
     }
 
@@ -45,7 +45,7 @@ enum Coins: String, Equatable, CaseIterable {
         case .btc: return "₿"
         case .eth: return "Ξ"
         case .trx: return "⛀"
-        case .luna: return "☾"
+        case .sol: return "◎"
         case .dot: return "●"
         case .doge: return "Ð"
         case .usdt: return "₮"

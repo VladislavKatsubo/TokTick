@@ -65,6 +65,7 @@ private extension TokenListTableView {
         tableView.backgroundColor = .clear
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.scrollIndicatorInsets = .init(top: .zero, left: .zero, bottom: .zero, right: .zero)
         tableView.register(TokenListCell.self, forCellReuseIdentifier: TokenListCell.reuseID)
         tableView.register(TokenListSkeletonCell.self, forCellReuseIdentifier: TokenListSkeletonCell.reuseID)
         tableView.snp.makeConstraints { make in
