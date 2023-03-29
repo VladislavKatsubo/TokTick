@@ -7,17 +7,21 @@
 
 import Foundation
 
-final class AppContext {
-//    let alertService: AlertService
-    let authService: AuthServiceProtocol
+struct AppContext {
+    let alertManager: AlertManagerProtocol
+    let authManager: AuthenticationManagerProtocol
     let networkManager: NetworkManagerProtocol
 
-    init(authService: AuthServiceProtocol, networkManager: NetworkManagerProtocol) {
-        self.authService = authService
-        self.networkManager = networkManager
-    }
+    static func context() -> AppContext {
+        let alertManager = AlertManager()
+        let authManager = AuthenticationManager()
+        let urlSession = URLSession(configuration: .default)
+        let networkManager = NetworkManager(session: urlSession)
 
-//    static func context() -> AppContext {
-//
-//    }
+        return AppContext(
+            alertManager: alertManager,
+            authManager: authManager,
+            networkManager: networkManager
+        )
+    }
 }

@@ -20,29 +20,26 @@ final class TokenMarketDataView: TView {
     }
 
     private let verticalStackView = TStackView(axis: .vertical, distribution: .fillEqually, spacing: Constants.spacing)
-    private let horizontalStackView = TStackView(axis: .horizontal, distribution: .fillEqually, spacing: Constants.spacing)
     private let usdPriceLabel = UILabel()
-    private let percentChangeLast1HourLabel = UILabel()
-    private let percentChangeLast24HourLabel = UILabel()
+    private let priceChangeLast1HourLabel = UILabel()
 
     // MARK: - Configure
-    func configure(with coin: Asset) {
-        let usdPrice = coin.data.marketData.priceUsd
-        let percentChangeLast1Hour = coin.data.marketData.percentChangeUsdLast1Hour
-        let percentChangeLast24Hour = coin.data.marketData.percentChangeUsdLast24Hours
-
+    func configure(with token: Asset) {
+        let usdPrice = token.data.marketData.priceUsd
         self.usdPriceLabel.text = usdPrice?.formatAsCurrency()
 
-        let percentChangeLast1HourText = NSAttributedString(percentChange: percentChangeLast1Hour, prefix: "h: ")
-        let percentChangeLast24HourText = NSAttributedString(percentChange: percentChangeLast24Hour, prefix: "d: ")
-
-        self.percentChangeLast1HourLabel.attributedText = percentChangeLast1HourText
-        self.percentChangeLast24HourLabel.attributedText = percentChangeLast24HourText
+        let percentChangeLast1Hour = token.data.marketData.percentChangeUsdLast1Hour
+        self.priceChangeLast1HourLabel.attributedText = NSAttributedString(percentChange: percentChangeLast1Hour)
     }
 
     // MARK: - Public methods
     override func didLoad() {
         setupItems()
+    }
+
+    func reset() {
+        self.usdPriceLabel.text = nil
+        self.priceChangeLast1HourLabel.text = nil
     }
 }
 
@@ -51,16 +48,14 @@ private extension TokenMarketDataView {
     func setupItems() {
         setupVerticalStackView()
         setupUsdPriceLabel()
-        setupHorizontalStackView()
         setuppercentChangeLast1HourLabel()
-        setuppercentChangeLast24HourLabel()
     }
 
     // MARK: Vertical StackView
     func setupVerticalStackView() {
         addSubview(verticalStackView)
         verticalStackView.addArrangedSubview(usdPriceLabel)
-        verticalStackView.addArrangedSubview(horizontalStackView)
+        verticalStackView.addArrangedSubview(priceChangeLast1HourLabel)
         verticalStackView.alignment = .trailing
         verticalStackView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
@@ -74,23 +69,8 @@ private extension TokenMarketDataView {
         usdPriceLabel.textAlignment = .right
     }
 
-    // MARK: Horizontal StackView
-    func setupHorizontalStackView() {
-        horizontalStackView.addArrangedSubview(percentChangeLast1HourLabel)
-        horizontalStackView.addArrangedSubview(percentChangeLast24HourLabel)
-    }
-
     func setuppercentChangeLast1HourLabel() {
-        percentChangeLast1HourLabel.font = .systemFont(ofSize: Constants.percentChangeFontSize, weight: .semibold)
-        percentChangeLast1HourLabel.textColor = Constants.percentChangeBaseColor
-        percentChangeLast1HourLabel.textAlignment = .right
-        percentChangeLast1HourLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
-    }
-
-    func setuppercentChangeLast24HourLabel() {
-        percentChangeLast24HourLabel.font = .systemFont(ofSize: Constants.percentChangeFontSize, weight: .semibold)
-        percentChangeLast24HourLabel.textColor = Constants.percentChangeBaseColor
-        percentChangeLast24HourLabel.textAlignment = .right
-        percentChangeLast24HourLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        priceChangeLast1HourLabel.font = .systemFont(ofSize: Constants.percentChangeFontSize, weight: .semibold)
+        priceChangeLast1HourLabel.textColor = Constants.percentChangeBaseColor
     }
 }

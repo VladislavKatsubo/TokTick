@@ -17,6 +17,7 @@ final class TokenListViewController: TViewController {
     private let tableViewToolBar = TokenListTableViewToolbar()
     private let tableView = TokenListTableView()
 
+    private var alertManager: AlertManagerProtocol?
     private var viewModel: TokenListViewModelProtocol?
 
     // MARK: - Lifecycle
@@ -27,35 +28,36 @@ final class TokenListViewController: TViewController {
     }
 
     // MARK: - Configure
-    func configure(viewModel: TokenListViewModelProtocol) {
+    func configure(viewModel: TokenListViewModelProtocol, alertManager: AlertManagerProtocol) {
         self.viewModel = viewModel
+        self.alertManager = alertManager
     }
 }
 
 private extension TokenListViewController {
     // MARK: - Private methods
     func setupViewModel() {
-        self.viewModel?.onMockTokenListView = { [weak self] in
-            self?.tableView.mockfigure()
-            self?.tableViewToolBar.mockfigure()
-            self?.balanceView.mockfigure()
+        viewModel?.onStateChange = { [weak self] state in
+            guard let self = self else { return }
+            
+            switch state {
+            case .onFetchTokens(let tokensData):
+                self.tableView.configure(with: tokensData)
+            case .onSort(let newIndicies):
+                self.tableView.animateSorting(newIndexMapping: newIndicies)
+            case .onMockTokenListView:
+                self.tableView.mockfigure()
+                self.tableViewToolBar.mockfigure()
+                self.balanceView.mockfigure()
+            case .onAssetTableLabel(let labelText):
+                self.tableViewToolBar.configure(with: labelText)
+            case .onAccountView(let model):
+                self.accountView.configure(with: model)
+            case .onBalanceView(let balance):
+                self.balanceView.configure(with: balance)
+            }
         }
-        self.viewModel?.onFetchCoins = { [weak self] coins in
-            self?.tableView.configure(with: coins)
-        }
-        self.viewModel?.onAccountView = { [weak self] model in
-            self?.accountView.configure(with: model)
-        }
-        self.viewModel?.onBalanceView = { [weak self] balance in
-            self?.balanceView.configure(with: balance)
-        }
-        self.viewModel?.onAssetTableLabel = { [weak self] labelText in
-            self?.tableViewToolBar.configure(with: labelText)
-        }
-        self.viewModel?.onSort = { [weak self] newIndicies in
-            self?.tableView.animateSorting(newIndexMapping: newIndicies)
-        }
-        self.viewModel?.launch()
+        viewModel?.launch()
     }
 
     func setupItems() {
@@ -68,22 +70,25 @@ private extension TokenListViewController {
     func setupStackView() {
         view.addSubview(stackView)
         stackView.addArrangedSubview(accountView)
-        stackView.setCustomSpacing(30.0, after: accountView)
+        stackView.setCustomSpacing(Constants.stackViewCustomSpacingAfterAccountView, after: accountView)
         stackView.addArrangedSubview(balanceView)
-        stackView.setCustomSpacing(30.0, after: balanceView)
+        stackView.setCustomSpacing(Constants.stackViewCustomSpacingAfterBalanceView, after: balanceView)
         stackView.addArrangedSubview(tableViewToolBar)
-        stackView.setCustomSpacing(10.0, after: tableViewToolBar)
+        stackView.setCustomSpacing(Constants.stackViewCustomSpacingAfterTableViewToolBar, after: tableViewToolBar)
         stackView.addArrangedSubview(tableView)
         stackView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(20.0)
-            make.leading.trailing.equalToSuperview().inset(20.0)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(Constants.stackViewTopOffset)
+            make.leading.trailing.equalToSuperview().inset(Constants.stackViewLeadingTrailingInset)
             make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
 
     func setupAccountView() {
         accountView.onTap = { [weak self] in
-            self?.viewModel?.logout()
+            guard let self = self else { return }
+            self.alertManager?.showAlert(ofType: .logoutConfirmation(logoutAction: {
+                self.viewModel?.logout()
+            }),on: self)
         }
     }
 
@@ -94,8 +99,8 @@ private extension TokenListViewController {
     }
 
     func setupTableView() {
-        tableView.onTap = { [weak self] coin in
-            self?.viewModel?.showDetails(for: coin)
+        tableView.onTap = { [weak self] token in
+            self?.viewModel?.showDetails(for: token)
         }
     }
 }
@@ -109,34 +114,26 @@ private extension TokenListViewController {
 
     
     func presentSortingOptions() {
-        let alertController = UIAlertController(title: "Sort by", message: nil, preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: Constants.alertControllerTitle, message: nil, preferredStyle: .actionSheet)
 
-        let hourAscending = UIAlertAction(title: "Hour: Ascending", style: .default) { [weak self] _ in
+        let hourAscending = UIAlertAction(title: Constants.alertActionHourAscendingTitle, style: .default) { [weak self] _ in
             self?.viewModel?.sort(option: .hour, ascending: true)
         }
-        let hourDescending = UIAlertAction(title: "Hour: Descending", style: .default) { [weak self] _ in
+        let hourDescending = UIAlertAction(title: Constants.alertActionHourDescendingTitle, style: .default) { [weak self] _ in
             self?.viewModel?.sort(option: .hour, ascending: false)
         }
-        let dayAscending = UIAlertAction(title: "Day: Ascending", style: .default) { [weak self] _ in
-            self?.viewModel?.sort(option: .day, ascending: true)
-        }
-        let dayDescending = UIAlertAction(title: "Day: Descending", style: .default) { [weak self] _ in
-            self?.viewModel?.sort(option: .day, ascending: false)
-        }
-        let alphabeticalAscending = UIAlertAction(title: "Alphabetical: A-Z", style: .default) { [weak self] _ in
+        let alphabeticalAscending = UIAlertAction(title: Constants.alertActionAlphabeticalAscendingTitle, style: .default) { [weak self] _ in
             self?.viewModel?.sort(option: .alphabetical, ascending: true)
         }
-        let alphabeticalDescending = UIAlertAction(title: "Alphabetical: Z-A", style: .default) { [weak self] _ in
+        let alphabeticalDescending = UIAlertAction(title: Constants.alertActionAlphabeticalDescendingTitle, style: .default) { [weak self] _ in
             self?.viewModel?.sort(option: .alphabetical, ascending: false)
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancelAction = UIAlertAction(title: Constants.alertControllerCancelActionTitle, style: .cancel)
 
         alertController.addAction(alphabeticalAscending)
         alertController.addAction(alphabeticalDescending)
         alertController.addAction(hourAscending)
         alertController.addAction(hourDescending)
-        alertController.addAction(dayAscending)
-        alertController.addAction(dayDescending)
         alertController.addAction(cancelAction)
 
 

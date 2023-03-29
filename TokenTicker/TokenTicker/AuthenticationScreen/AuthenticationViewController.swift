@@ -1,5 +1,5 @@
 //
-//  AuthViewController.swift
+//  AuthenticationViewController.swift
 //  TokenTicker
 //
 //  Created by Vlad Katsubo on 7.03.23.
@@ -8,9 +8,9 @@
 import UIKit
 import SnapKit
 
-final class AuthViewController: TViewController {
+final class AuthenticationViewController: TViewController {
 
-    typealias Constants = AuthResources.Constants.UI
+    typealias Constants = AuthenticationResources.Constants.UI
 
     private let logoImageView = UIImageView()
     private let stackView = TStackView(axis: .vertical, spacing: Constants.stackViewSpacing)
@@ -18,7 +18,8 @@ final class AuthViewController: TViewController {
     private let passwordTextField = AuthTextField()
     private let loginButton = AuthButton()
 
-    private var viewModel: AuthViewModelProtocol?
+    private var alertManager: AlertManagerProtocol?
+    private var viewModel: AuthenticationViewModelProtocol?
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -28,20 +29,28 @@ final class AuthViewController: TViewController {
     }
 
     // MARK: - Configure
-    func configure(viewModel: AuthViewModelProtocol) {
+    func configure(viewModel: AuthenticationViewModelProtocol, alertManager: AlertManagerProtocol) {
         self.viewModel = viewModel
+        self.alertManager = alertManager
     }
 }
 
-private extension AuthViewController {
+private extension AuthenticationViewController {
     // MARK: - Private methods
     func setupViewModel() {
-        viewModel?.setupLoginTextField(completion: { [weak self] login in
-            self?.loginTextField.configure(with: login, placeholder: Constants.loginTextFieldPlaceholder)
-        })
-        viewModel?.setupPasswordTextField(completion: { [weak self] password in
-            self?.passwordTextField.configure(with: password, placeholder: Constants.passwordTextFieldPlaceholder)
-        })
+        self.viewModel?.onStateChange =  { [weak self] states in
+            guard let self = self else { return }
+
+            switch states {
+            case .onMockLoginTextField(let model):
+                self.loginTextField.configure(with: model)
+            case .onMockPasswordTextField(let model):
+                self.passwordTextField.configure(with: model)
+            case .onShowAlert:
+                self.alertManager?.showAlert(ofType: .invalidCredentials, on: self)
+            }
+        }
+        self.viewModel?.launch()
     }
 
     func setupItems() {
@@ -53,9 +62,9 @@ private extension AuthViewController {
     }
 
     func setupLogoImageView() {
-        logoImageView.image = .init(systemName: "bitcoinsign.circle.fill")?.withTintColor(.black, renderingMode: .alwaysOriginal)
+        logoImageView.image = Constants.logoImage
         logoImageView.snp.makeConstraints { make in
-            make.width.equalTo(150.0)
+            make.width.equalTo(stackView.snp.width)
             make.height.equalTo(logoImageView.snp.width)
         }
     }

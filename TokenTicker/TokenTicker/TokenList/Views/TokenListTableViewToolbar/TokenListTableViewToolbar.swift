@@ -11,9 +11,13 @@ final class TokenListTableViewToolbar: TView {
     private enum Constants {
         static let labelHeight: CGFloat = 20.0
         static let labelWidth: CGFloat = 70.0
+
         static let font: UIFont = .systemFont(ofSize: labelHeight, weight: .semibold)
+
         static let leadingOffset: CGFloat = 20.0
         static let trailingInset: CGFloat = 20.0
+
+        static let sortButtonImage: UIImage? = UIImage(systemName: "arrow.up.arrow.down")?.withTintColor(.black, renderingMode: .alwaysOriginal)
     }
 
     private let label = UILabel()
@@ -29,16 +33,11 @@ final class TokenListTableViewToolbar: TView {
 
     // MARK: - Configure
     func configure(with text: String) {
-        UIView.animate(withDuration: 0.75, animations: {
-            self.alpha = 0.0
-        }) { _ in
+        fadeAnimation(viewsToHide: [self], viewsToShow: [self]) {
             self.label.text = text
             self.skeletonLabelView.stopShimmering()
             self.skeletonLabelView.isHidden = true
             self.sortButton.isHidden = false
-            UIView.animate(withDuration: 0.75) {
-                self.alpha = 1.0
-            }
         }
     }
 
@@ -80,7 +79,7 @@ private extension TokenListTableViewToolbar {
         sortButton.onTap = { [weak self] in
             self?.onTap?()
         }
-        sortButton.setImage(UIImage(systemName: "arrow.up.arrow.down")?.withTintColor(.black, renderingMode: .alwaysOriginal), for: .normal)
+        sortButton.setImage(Constants.sortButtonImage, for: .normal)
         sortButton.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
             make.trailing.equalToSuperview().inset(Constants.trailingInset)

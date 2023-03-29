@@ -17,7 +17,7 @@ class TCollectionViewCell: UICollectionViewCell {
 
     static var reuseID: String { String(describing: self) }
 
-    // MARK: - Initializator
+    // MARK: - Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)

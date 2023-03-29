@@ -13,8 +13,13 @@ final class TokenDetailsCollectionViewStatisticsCell: TCollectionViewCell {
         static let typeTitleLabelFontSize: CGFloat = 14.0
         static let typeTitleLabelFont: UIFont = .systemFont(ofSize: Constants.typeTitleLabelFontSize, weight: .regular)
 
-        static let valueLabelFontSize: CGFloat = 20.0
-        static let valueLabelFont: UIFont = .systemFont(ofSize: Constants.valueLabelFontSize, weight: .bold)
+        static let valueLabelFontSize: CGFloat = 18.0
+        static let valueLabelFont: UIFont = .systemFont(ofSize: Constants.valueLabelFontSize, weight: .semibold)
+
+        static let typeTitleLabelTopOffset: CGFloat = 20.0
+        static let typeTitleLabelLeadingOffset: CGFloat = 20.0
+        static let valueLabelTopOffset: CGFloat = 10.0
+        static let valueLabelLeadingOffset: CGFloat = 20.0
     }
 
     private let typeTitleLabel = UILabel()
@@ -44,8 +49,8 @@ private extension TokenDetailsCollectionViewStatisticsCell {
         typeTitleLabel.font = Constants.typeTitleLabelFont
         typeTitleLabel.textColor = Constants.typeTitleLabelFontColor
         typeTitleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(20.0)
-            make.leading.equalToSuperview().offset(20.0)
+            make.top.equalToSuperview().offset(Constants.typeTitleLabelTopOffset)
+            make.leading.equalToSuperview().offset(Constants.typeTitleLabelLeadingOffset)
         }
     }
 
@@ -53,8 +58,8 @@ private extension TokenDetailsCollectionViewStatisticsCell {
         addSubview(valueLabel)
         valueLabel.font = Constants.valueLabelFont
         valueLabel.snp.makeConstraints { make in
-            make.top.equalTo(typeTitleLabel.snp.bottom).offset(20.0)
-            make.leading.equalToSuperview().offset(20.0)
+            make.top.equalTo(typeTitleLabel.snp.bottom).offset(Constants.valueLabelTopOffset)
+            make.leading.equalToSuperview().offset(Constants.valueLabelLeadingOffset)
         }
     }
 }

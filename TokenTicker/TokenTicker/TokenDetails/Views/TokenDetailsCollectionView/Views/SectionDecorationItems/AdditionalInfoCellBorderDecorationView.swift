@@ -10,6 +10,13 @@ import UIKit
 final class AdditionalInfoCellBorderDecorationItem: UICollectionReusableView {
     static let reuseIdentifier = "AdditionalInfoCellBorderDecorationItem"
 
+    private enum Constants {
+        static let borderWidth: CGFloat = 2.0
+        static let blackBorderColor: UIColor = UIColor.black
+        static let cornerRadius: CGFloat = 25.0
+        static let backgroundColor: UIColor = UIColor.white
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -19,11 +26,6 @@ final class AdditionalInfoCellBorderDecorationItem: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setupView() {
-        self.backgroundColor = UIColor.white
-        self.clipsToBounds = true
-    }
-
     override func draw(_ rect: CGRect) {
         drawTopLeftRightBorder(for: rect)
     }
@@ -31,10 +33,15 @@ final class AdditionalInfoCellBorderDecorationItem: UICollectionReusableView {
 
 private extension AdditionalInfoCellBorderDecorationItem {
     // MARK: - Private methods
+    func setupView() {
+        backgroundColor = Constants.backgroundColor
+        clipsToBounds = true
+    }
+
     func drawTopLeftRightBorder(for rect: CGRect) {
-        let borderWidth: CGFloat = 1.0
-        let blackBorderColor = UIColor.black
-        let cornerRadius: CGFloat = 25.0
+        let borderWidth: CGFloat = Constants.borderWidth
+        let blackBorderColor = Constants.blackBorderColor
+        let cornerRadius: CGFloat = Constants.cornerRadius
 
         let path = UIBezierPath()
 

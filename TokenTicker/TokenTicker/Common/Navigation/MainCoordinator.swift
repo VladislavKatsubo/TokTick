@@ -18,16 +18,16 @@ protocol Coordinator: AnyObject {
 final class MainCoordinator: Coordinator {
 
     let window: UIWindow
-    let authService: UserDefaultsAuthService
+    let appContext: AppContext
     var navigationController: UINavigationController?
 
-    init(window: UIWindow, authService: UserDefaultsAuthService) {
+    init(window: UIWindow, appContext: AppContext) {
         self.window = window
-        self.authService = authService
+        self.appContext = appContext
     }
 
     func start() {
-        guard authService.isLoggedIn() else {
+        guard appContext.authManager.isLoggedIn() else {
             showLoginScreen()
             return
         }
@@ -35,26 +35,23 @@ final class MainCoordinator: Coordinator {
     }
 
     func logout() {
-        authService.logout()
+        appContext.authManager.logout()
         showLoginScreen()
     }
 
     func showLoginScreen() {
-        let viewModel = AuthViewModel(authService: authService, coordinator: self)
-        let viewController = AuthViewController()
-        viewController.configure(viewModel: viewModel)
+        let viewModel = AuthenticationViewModel(appContext: appContext, coordinator: self)
+        let viewController = AuthenticationViewController()
+        viewController.configure(viewModel: viewModel, alertManager: appContext.alertManager)
 
         self.window.rootViewController = viewController
         self.window.makeKeyAndVisible()
     }
 
     func showMainScreen() {
-        let urlSession = URLSession(configuration: .default)
-        let networkManager = NetworkManager(session: urlSession)
-        let appContext = AppContext(authService: authService, networkManager: networkManager)
         let viewModel = TokenListViewModel(coordinator: self, appContext: appContext)
         let viewController = TokenListViewController()
-        viewController.configure(viewModel: viewModel)
+        viewController.configure(viewModel: viewModel, alertManager: appContext.alertManager)
 
         navigationController = UINavigationController(rootViewController: viewController)
 

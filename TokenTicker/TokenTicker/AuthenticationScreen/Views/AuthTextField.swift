@@ -32,8 +32,8 @@ final class AuthTextField: UIView {
     }
 
     // MARK: - Configure
-    func configure(with title: String, placeholder: String) {
-        textField.configure(with: title, placeholder: placeholder)
+    func configure(with model: Model) {
+        textField.configure(with: model.text, placeholder: model.placeholder)
     }
 }
 

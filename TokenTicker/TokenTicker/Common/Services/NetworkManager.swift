@@ -16,7 +16,7 @@ enum NetworkError: Error {
     case invalidData
 }
 
-final class NetworkManager: NetworkManagerProtocol {
+struct NetworkManager: NetworkManagerProtocol {
 
     internal var session: URLSession
 

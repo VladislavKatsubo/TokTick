@@ -8,18 +8,12 @@
 import Foundation
 
 protocol TokenListViewModelProtocol {
+    var onStateChange: ((TokenListResources.State) -> Void)? { get set }
+
     func launch()
     func logout()
     func sort(option: TokenListViewModel.SortingOptions, ascending: Bool)
-    func showDetails(for coin: Asset)
-
-
-    var onFetchCoins: (([Asset]) -> Void)? { get set }
-    var onSort: (([IndexPath: IndexPath]) -> Void)? { get set }
-    var onMockTokenListView: (() -> Void)? { get set }
-    var onAssetTableLabel: ((String) -> Void)? { get set }
-    var onAccountView: ((TokenListAccountView.Model) -> Void)? { get set }
-    var onBalanceView: ((Double) -> Void)? { get set }
+    func showDetails(for token: Asset)
 }
 
 final class TokenListViewModel: TokenListViewModelProtocol {
@@ -29,14 +23,9 @@ final class TokenListViewModel: TokenListViewModelProtocol {
     private let coordinator: Coordinator
     private let appContext: AppContext
 
-    private var coinsData: [Asset] = []
+    private var tokens: [Asset] = []
 
-    var onFetchCoins: (([Asset]) -> Void)?
-    var onSort: (([IndexPath: IndexPath]) -> Void)?
-    var onMockTokenListView: (() -> Void)?
-    var onAssetTableLabel: ((String) -> Void)?
-    var onAccountView: ((TokenListAccountView.Model) -> Void)?
-    var onBalanceView: ((Double) -> Void)?
+    var onStateChange: ((TokenListResources.State) -> Void)?
 
     // MARK: - Init
     init(coordinator: Coordinator, appContext: AppContext) {
@@ -46,29 +35,22 @@ final class TokenListViewModel: TokenListViewModelProtocol {
 
     // MARK: - Public methods
     func launch() {
-        fetchAllCoinsData()
+        fetchAllTokens()
         setupTableViewMockData()
         setupAccountView()
-//        mockBalanceViewLabelLoading()
-//        mockAssetTableLabelLoading()
     }
 
-    func fetchAllCoinsData() {
-//        coinsData = Constants.assets
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
-//            guard let self = self else { return }
-//            self.onFetchCoins?(self.coinsData)
-//        }
+    func fetchAllTokens() {
         let group = DispatchGroup()
 
-        Coins.allCases.forEach({ [weak self] in
-            guard let url = $0.url else { return }
+        Tokens.allCases.forEach({ [weak self] in
+            guard let url = APIEndpoint.metrics(token: $0.info).url else { return }
             group.enter()
             self?.appContext.networkManager.fetchData(url: url, expecting: Asset.self, completion: { result in
                 defer { group.leave()}
                 switch result {
-                case .success(let coinData):
-                    self?.coinsData.append(coinData)
+                case .success(let token):
+                    self?.tokens.append(token)
                 case .failure(let error):
                     print(error)
                 }
@@ -78,14 +60,14 @@ final class TokenListViewModel: TokenListViewModelProtocol {
         group.notify(queue: .main) { [weak self] in
             guard let self = self else { return }
 
-            self.onFetchCoins?(self.coinsData)
-            self.onAssetTableLabel?("\(String(describing: self.coinsData.count)) Assets")
-            self.onBalanceView?(Constants.mockUserModel.balance)
+            self.onStateChange?(.onFetchTokens(self.tokens))
+            self.onStateChange?(.onAssetTableLabel("\(String(describing: self.tokens.count)) Assets"))
+            self.onStateChange?(.onBalanceView(Constants.mockUserModel.balance))
         }
     }
 
     func showDetails(for token: Asset) {
-        self.coordinator.showDetailScreen(for: token)
+        coordinator.showDetailScreen(for: token)
     }
 
     func logout() {
@@ -93,23 +75,17 @@ final class TokenListViewModel: TokenListViewModelProtocol {
     }
 
     func sort(option: SortingOptions, ascending: Bool) {
-        let initialIndexMapping: [IndexPath: Asset] = Dictionary(uniqueKeysWithValues: zip(coinsData.indices.map { IndexPath(row: $0, section: 0) }, coinsData))
+        let initialIndexMapping: [IndexPath: Asset] = Dictionary(uniqueKeysWithValues: zip(tokens.indices.map { IndexPath(row: $0, section: 0) }, tokens))
 
         switch option {
         case .hour:
-            coinsData.sort {
+            tokens.sort {
                 let lhs = $0.data.marketData.percentChangeUsdLast1Hour ?? 0
                 let rhs = $1.data.marketData.percentChangeUsdLast1Hour ?? 0
                 return ascending ? lhs < rhs : lhs > rhs
             }
-        case .day:
-            coinsData.sort {
-                let lhs = $0.data.marketData.percentChangeUsdLast24Hours ?? 0
-                let rhs = $1.data.marketData.percentChangeUsdLast24Hours ?? 0
-                return ascending ? lhs < rhs : lhs > rhs
-            }
         case .alphabetical:
-            coinsData.sort {
+            tokens.sort {
                 let lhs = $0.data.name
                 let rhs = $1.data.name
                 return ascending ? lhs < rhs : lhs > rhs
@@ -117,41 +93,27 @@ final class TokenListViewModel: TokenListViewModelProtocol {
         }
 
         let newIndexMapping: [IndexPath: IndexPath] = initialIndexMapping.compactMapValues { asset in
-            coinsData.firstIndex(where: { $0 == asset }).map { IndexPath(row: $0, section: 0) }
+            tokens.firstIndex(where: { $0 == asset }).map { IndexPath(row: $0, section: 0) }
         }
 
-        onSort?(newIndexMapping)
+        onStateChange?(.onSort(newIndexMapping))
     }
 }
 
 private extension TokenListViewModel {
     // MARK: - Private methods
     func setupTableViewMockData() {
-        onMockTokenListView?()
-    }
-
-    func mockAssetTableLabelLoading() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
-            guard let self = self else { return }
-            self.onAssetTableLabel?("\(self.coinsData.count) Assets")
-        }
-    }
-
-    func mockBalanceViewLabelLoading() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
-            self?.onBalanceView?(Constants.mockUserModel.balance)
-        }
+        onStateChange?(.onMockTokenListView)
     }
 
     func setupAccountView() {
-        onAccountView?(Constants.mockUserModel)
+        onStateChange?(.onAccountView(Constants.mockUserModel))
     }
 }
 
 extension TokenListViewModel {
     enum SortingOptions {
         case hour
-        case day
         case alphabetical
     }
 }

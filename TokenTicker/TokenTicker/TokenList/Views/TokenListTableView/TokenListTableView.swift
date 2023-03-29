@@ -10,11 +10,12 @@ import UIKit
 final class TokenListTableView: TView {
 
     private enum Constants {
-        static let mockCellsCount: Int = 8
+        static let skeletonCellsCount: Int = 8
+        static let skeletonCellHeight: CGFloat = 90.0
     }
 
     private let tableView = UITableView(frame: .zero, style: .plain)
-    private var coins: [Asset] = [] {
+    private var tokens: [Asset] = [] {
         didSet {
             isRealData = true
         }
@@ -25,8 +26,8 @@ final class TokenListTableView: TView {
     var onTap: ((Asset) -> Void)?
 
     // MARK: - Configure
-    func configure(with coins: [Asset]) {
-        self.coins = coins
+    func configure(with tokens: [Asset]) {
+        self.tokens = tokens
         self.tableView.reloadDataWithAnimation()
         self.tableView.isUserInteractionEnabled = true
     }
@@ -43,17 +44,17 @@ final class TokenListTableView: TView {
     }
 
     func animateSorting(newIndexMapping: [IndexPath: IndexPath]) {
+        var updatedTokens = tokens
+        newIndexMapping.forEach { oldIndexPath, newIndexPath in
+            updatedTokens[newIndexPath.row] = tokens[oldIndexPath.row]
+        }
+        self.tokens = updatedTokens
+        
         self.tableView.beginUpdates()
         newIndexMapping.forEach { oldIndexPath, newIndexPath in
             self.tableView.moveRow(at: oldIndexPath, to: newIndexPath)
         }
         self.tableView.endUpdates()
-
-        var updatedCoins = coins
-        newIndexMapping.forEach { oldIndexPath, newIndexPath in
-            updatedCoins[newIndexPath.row] = coins[oldIndexPath.row]
-        }
-        self.coins = updatedCoins
     }
 }
 
@@ -65,7 +66,7 @@ private extension TokenListTableView {
         tableView.backgroundColor = .clear
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.scrollIndicatorInsets = .init(top: .zero, left: .zero, bottom: .zero, right: .zero)
+        tableView.showsVerticalScrollIndicator = false
         tableView.register(TokenListCell.self, forCellReuseIdentifier: TokenListCell.reuseID)
         tableView.register(TokenListSkeletonCell.self, forCellReuseIdentifier: TokenListSkeletonCell.reuseID)
         tableView.snp.makeConstraints { make in
@@ -77,13 +78,13 @@ private extension TokenListTableView {
 extension TokenListTableView: UITableViewDelegate {
     // MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        onTap?(coins[indexPath.row])
+        onTap?(tokens[indexPath.row])
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let reuseIdentifier = isRealData ? TokenListCell.reuseID : TokenListSkeletonCell.reuseID
         if reuseIdentifier == TokenListSkeletonCell.reuseID {
-            return 90.0
+            return Constants.skeletonCellHeight
         } else {
             return UITableView.automaticDimension
         }
@@ -92,7 +93,7 @@ extension TokenListTableView: UITableViewDelegate {
 
 extension TokenListTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        isRealData ? coins.count : Constants.mockCellsCount
+        isRealData ? tokens.count : Constants.skeletonCellsCount
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -113,8 +114,8 @@ extension TokenListTableView: UITableViewDataSource {
             return .init()
         }
 
-        let coin = coins[indexPath.row]
-        realDataCell.configure(with: coin, isRealData: isRealData)
+        let token = tokens[indexPath.row]
+        realDataCell.configure(with: token, isRealData: isRealData)
 
         return realDataCell
     }

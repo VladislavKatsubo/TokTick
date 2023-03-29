@@ -11,9 +11,10 @@ class StatisticsSectionHeaderView: UICollectionReusableView {
     static let reuseIdentifier = "StatisticsSectionHeaderView"
 
     private enum Constants {
-        static let fontHeight: CGFloat = 20.0
+        static let fontHeight: CGFloat = 18.0
         static let font: UIFont = .systemFont(ofSize: fontHeight, weight: .semibold)
         static let leadingOffset: CGFloat = 20.0
+        static let centerYOffset: CGFloat = 10.0
     }
 
     private let titleLabel = UILabel()
@@ -40,7 +41,7 @@ private extension StatisticsSectionHeaderView {
         titleLabel.font = Constants.font
 
         titleLabel.snp.makeConstraints { make in
-            make.centerY.equalToSuperview().offset(10.0)
+            make.centerY.equalToSuperview().offset(Constants.centerYOffset)
             make.leading.equalToSuperview().offset(Constants.leadingOffset)
         }
     }

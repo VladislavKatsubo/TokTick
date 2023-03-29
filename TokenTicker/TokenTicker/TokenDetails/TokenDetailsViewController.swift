@@ -11,6 +11,7 @@ final class TokenDetailsViewController: TViewController {
 
     typealias Constants = TokenDetailsResources.Constants.UI
 
+    private let tokenPriceView = TokenPriceView()
     private let collectionView = TokenDetailsCollectionView()
 
     private var viewModel: TokenDetailsViewModelProtocol?
@@ -32,23 +33,38 @@ final class TokenDetailsViewController: TViewController {
 private extension TokenDetailsViewController {
     // MARK: - Private methods
     func setupViewModel() {
-        self.viewModel?.onCollectionModels = { [weak self] models in
-            self?.collectionView.configure(with: models)
+        viewModel?.onStateChange = { [weak self] state in
+            switch state {
+            case .onPriceView(let models):
+                self?.tokenPriceView.configure(with: models)
+            case .onCollectionModels(let models):
+                self?.collectionView.configure(with: models)
+            case .onSetTitle(let title):
+                self?.title = title
+            }
+
         }
-        self.viewModel?.onSetTitle = { [weak self] title in
-            self?.title = title
-        }
-        self.viewModel?.launch()
+        viewModel?.launch()
     }
 
     func setupItems() {
+        setupTokenPriceView()
         setupCollectionView()
+    }
+
+    func setupTokenPriceView() {
+        view.addSubview(tokenPriceView)
+        tokenPriceView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(Constants.tokenPriceViewTopOffset)
+            make.leading.trailing.equalToSuperview().inset(Constants.tokenPriceViewLeadingTrailingInset)
+        }
     }
 
     func setupCollectionView() {
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(tokenPriceView.snp.bottom)
+            make.leading.trailing.bottom.equalToSuperview()
         }
     }
 }

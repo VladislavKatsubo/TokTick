@@ -20,9 +20,9 @@ final class TokenSymbolNameView: TView {
     private let symbolLabel = UILabel()
 
     // MARK: - Configure
-    func configure(with coin: Asset) {
-        let name = coin.data.name
-        let symbol = coin.data.symbol
+    func configure(with token: Asset) {
+        let name = token.data.name
+        let symbol = token.data.symbol
 
         self.nameLabel.text = name
         self.symbolLabel.text = symbol
@@ -31,6 +31,11 @@ final class TokenSymbolNameView: TView {
     // MARK: - Public methods
     override func didLoad() {
         setupItems()
+    }
+
+    func reset() {
+        self.nameLabel.text = nil
+        self.symbolLabel.text = nil
     }
 }
 

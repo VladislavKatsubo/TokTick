@@ -20,19 +20,25 @@ final class TokenIconView: TView {
     private let circleLayer = CAShapeLayer()
     private let symbol = UILabel()
 
-    // MARK: - Configure
-    func configure(with tokenSymbol: String) {
-        let coin = Coins(rawValue: tokenSymbol.lowercased())
-        symbol.text = coin?.unicodeSymbol
-    }
-
+    // MARK: - Lifecycle
     override func layoutSubviews() {
         super.layoutSubviews()
         setupItems()
     }
+
+    // MARK: - Configure
+    func configure(with tokenName: String) {
+        symbol.text = tokenName.first?.uppercased()
+    }
+
+    // MARK: - Public methods
+    func reset() {
+        self.symbol.text = nil
+    }
 }
 
 private extension TokenIconView {
+    // MARK: - Private methods
     func setupItems() {
         setupLabel()
         setupCircle()

@@ -17,8 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
         let window = UIWindow(windowScene: windowScene)
-        let authService = UserDefaultsAuthService()
-        coordinator = MainCoordinator(window: window, authService: authService)
+        let appContext = AppContext.context()
+        coordinator = MainCoordinator(window: window, appContext: appContext)
         coordinator?.start()
         
         self.window = window

@@ -14,6 +14,7 @@ final class AuthButton: TButton {
         static let borderColor: CGColor = UIColor.black.cgColor
         static let borderWidth: CGFloat = 1.0
         static let cornerRadius: CGFloat = 10.0
+        static let height: CGFloat = 50.0
 
         static let font: UIFont = .systemFont(ofSize: 18.0, weight: .regular)
         static let titleColor: UIColor = .black
@@ -52,7 +53,7 @@ private extension AuthButton {
         titleColor = Constants.titleColor
         title = Constants.title
         self.snp.makeConstraints { make in
-            make.height.equalTo(50.0)
+            make.height.equalTo(Constants.height)
         }
     }
 }

@@ -37,6 +37,7 @@ final class TTextField: UITextField {
         }
     }
 
+    private let clearButton = UIButton(type: .custom)
 
     // MARK: - Init
     init() {
@@ -49,12 +50,12 @@ final class TTextField: UITextField {
     }
 
     // MARK: - Configure
-    func configure(with text: String, placeholder: String) {
+    func configure(with text: String?, placeholder: String?) {
         self.text = text
         self.placeholder = placeholder
     }
 
-    // MARK: - Public methods
+    // MARK: - Lifecycle
     override func textRect(forBounds bounds: CGRect) -> CGRect {
         let rect = super.textRect(forBounds: bounds)
         let textPadding = rightView == nil ? Constants.standardTextPadding : Constants.rightViewTextPadding
@@ -67,6 +68,25 @@ final class TTextField: UITextField {
         return rect.inset(by: textPadding)
     }
 
+    override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
+        var rect = super.rightViewRect(forBounds: bounds)
+        rect.origin.x -= Constants.standardTextPadding.right
+        return rect
+    }
+
+    override func becomeFirstResponder() -> Bool {
+        let result = super.becomeFirstResponder()
+        updateClearButtonVisibility()
+        return result
+    }
+
+    override func resignFirstResponder() -> Bool {
+        let result = super.resignFirstResponder()
+        updateClearButtonVisibility()
+        return result
+    }
+
+    // MARK: - Public methods
     func didLoad() {
         setup()
     }
@@ -75,6 +95,11 @@ final class TTextField: UITextField {
 private extension TTextField {
     // MARK: - Private methods
     func setup() {
+        setupTextField()
+        setupButton()
+    }
+
+    func setupTextField() {
         layer.borderWidth = Constants.borderWidth
         layer.cornerRadius = Constants.cornerRadius
         layer.borderColor = Constants.borderColor.cgColor
@@ -84,11 +109,31 @@ private extension TTextField {
         textColor = Constants.mainTextColor
         backgroundColor = .clear
 
+        rightView = clearButton
+        rightViewMode = .always
+
         addTarget(self, action: #selector(didValueChanged), for: .editingChanged)
+    }
+
+    func setupButton() {
+        clearButton.setImage(UIImage(systemName: "xmark.circle"), for: .normal)
+        clearButton.tintColor = .gray
+        clearButton.addTarget(self, action: #selector(clearText), for: .touchUpInside)
+        clearButton.isHidden = true
     }
 
     @objc
     func didValueChanged() {
-        print(text ?? "no text")
+        updateClearButtonVisibility()
+    }
+
+    @objc
+    func clearText() {
+        text = ""
+        updateClearButtonVisibility()
+    }
+
+    func updateClearButtonVisibility() {
+        clearButton.isHidden = !(isEditing && !(text?.isEmpty ?? true))
     }
 }

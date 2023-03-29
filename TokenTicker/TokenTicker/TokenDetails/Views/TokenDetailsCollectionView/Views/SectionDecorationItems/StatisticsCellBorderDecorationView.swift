@@ -10,6 +10,14 @@ import UIKit
 final class StatisticsCellBorderDecorationView: UICollectionReusableView {
     static let reuseIdentifier = "StatisticsCellBorderDecorationView"
 
+    private enum Constants {
+        static let borderWidth: CGFloat = 2.0
+        static let grayBorderColor: UIColor = UIColor.systemGray5
+        static let blackBorderColor: UIColor = UIColor.black
+        static let cornerRadius: CGFloat = 25.0
+    }
+
+    // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -17,11 +25,6 @@ final class StatisticsCellBorderDecorationView: UICollectionReusableView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    func setupView() {
-        self.backgroundColor = UIColor.white
-        self.clipsToBounds = true
     }
 
     override func draw(_ rect: CGRect) {
@@ -32,10 +35,15 @@ final class StatisticsCellBorderDecorationView: UICollectionReusableView {
 
 private extension StatisticsCellBorderDecorationView {
     // MARK: - Private methods
+    func setupView() {
+        backgroundColor = UIColor.white
+        clipsToBounds = true
+    }
+
     func drawTopLeftRightBorder(for rect: CGRect) {
-        let borderWidth: CGFloat = 1.0
-        let blackBorderColor = UIColor.black
-        let cornerRadius: CGFloat = 25.0
+        let borderWidth: CGFloat = Constants.borderWidth
+        let blackBorderColor = Constants.blackBorderColor
+        let cornerRadius: CGFloat = Constants.cornerRadius
 
         let path = UIBezierPath()
 
@@ -75,8 +83,8 @@ private extension StatisticsCellBorderDecorationView {
     }
 
     func drawMiddleBottomBorders(for rect: CGRect) {
-        let borderWidth: CGFloat = 1.0
-        let grayBorderColor = UIColor.systemGray5
+        let borderWidth: CGFloat = Constants.borderWidth
+        let grayBorderColor = Constants.grayBorderColor
         let path = UIBezierPath()
 
         // Draw bottom border

@@ -8,20 +8,31 @@
 import Foundation
 
 struct TokenListResources {
-//    // MARK: - Handlers
-//    struct Handlers {
-//        var onAddNewPin: () -> Void
-//    }
-
     // MARK: - States
     enum State {
-        case onSort(Bool)
-        case onMockTableViewData
+        case onFetchTokens([Asset])
+        case onSort([IndexPath: IndexPath])
+        case onMockTokenListView
+        case onAssetTableLabel(String)
+        case onAccountView(TokenListAccountView.Model)
+        case onBalanceView(Double)
     }
 
     enum Constants {
 
         enum UI {
+            static let stackViewCustomSpacingAfterAccountView: CGFloat = 30.0
+            static let stackViewCustomSpacingAfterBalanceView: CGFloat = 30.0
+            static let stackViewCustomSpacingAfterTableViewToolBar: CGFloat = 10.0
+            static let stackViewTopOffset: CGFloat = 20.0
+            static let stackViewLeadingTrailingInset: CGFloat = 20.0
+
+            static let alertControllerTitle: String = "Sort by"
+            static let alertActionHourAscendingTitle: String = "Hour: Ascending"
+            static let alertActionHourDescendingTitle: String = "Hour: Descending"
+            static let alertActionAlphabeticalAscendingTitle: String = "Alphabetical: A-Z"
+            static let alertActionAlphabeticalDescendingTitle: String = "Alphabetical: Z-A"
+            static let alertControllerCancelActionTitle: String = "Cancel"
         }
 
         enum Mocks {

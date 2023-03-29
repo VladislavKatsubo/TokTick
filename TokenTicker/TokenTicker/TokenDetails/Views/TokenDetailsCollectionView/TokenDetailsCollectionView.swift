@@ -9,6 +9,14 @@ import UIKit
 
 final class TokenDetailsCollectionView: TView {
     private enum Constants {
+        static let leadingTrailingInset: CGFloat = 20.0
+
+        static let statisticsSectionGroupAbsoluteHeight: CGFloat = 80.0
+        static let statisticsSectionHeaderHeight: CGFloat = 60.0
+        static let statisticsSectionDecorationItemTopOffset : CGFloat = 60.0
+
+        static let additionalInfoSectionGroupAbsoluteHeight: CGFloat = 80.0
+
         static let currentInfoSectionHeader: String = "Last hour metrics:"
         static let statisticsSectionHeader: String = "Overall metrics:"
     }
@@ -69,7 +77,7 @@ private extension TokenDetailsCollectionView {
         )
         collectionView.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
-            make.leading.trailing.equalToSuperview().inset(20.0)
+            make.leading.trailing.equalToSuperview().inset(Constants.leadingTrailingInset)
         }
     }
 }
@@ -184,7 +192,7 @@ private extension TokenDetailsCollectionView {
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1.0),
-                heightDimension: .absolute(100)
+                heightDimension: .absolute(Constants.statisticsSectionGroupAbsoluteHeight)
             ),
             subitem: item,
             count: 2
@@ -195,7 +203,7 @@ private extension TokenDetailsCollectionView {
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: .init(
                 widthDimension: .fractionalWidth(1.0),
-                heightDimension: .absolute(60.0)),
+                heightDimension: .absolute(Constants.statisticsSectionHeaderHeight)),
             elementKind: UICollectionView.elementKindSectionHeader,
             alignment: .top
         )
@@ -205,7 +213,7 @@ private extension TokenDetailsCollectionView {
         )
 
         decoration.contentInsets = .init(
-            top: 60.0,
+            top: Constants.statisticsSectionDecorationItemTopOffset,
             leading: .zero,
             bottom: .zero,
             trailing: .zero
@@ -225,7 +233,7 @@ private extension TokenDetailsCollectionView {
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: .init(
                 widthDimension: .fractionalWidth(1.0),
-                heightDimension: .absolute(100)
+                heightDimension: .absolute(Constants.additionalInfoSectionGroupAbsoluteHeight)
             ),
             subitems: [item]
         )

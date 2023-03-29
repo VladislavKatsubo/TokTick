@@ -9,12 +9,7 @@ import UIKit
 
 final class AccountLogoutButton: TButton {
     private enum Constants {
-        static let image = UIImage(
-            systemName: "iphone.and.arrow.forward"
-        )?.withTintColor(
-            .black,
-            renderingMode: .alwaysOriginal
-        )
+        static let image = UIImage(systemName: "iphone.and.arrow.forward")?.withTintColor(.black, renderingMode:.alwaysOriginal)
     }
 
     // MARK: - Public methods

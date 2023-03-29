@@ -8,9 +8,8 @@
 import Foundation
 
 protocol TokenDetailsViewModelProtocol {
+    var onStateChange: ((TokenDetailsResources.State) -> Void)? { get set }
     func launch()
-    var onCollectionModels: (([TokenDetailsCollectionView.CellModel]) -> Void)? { get set }
-    var onSetTitle: ((String) -> Void)? { get set }
 }
 
 final class TokenDetailsViewModel: TokenDetailsViewModelProtocol {
@@ -19,22 +18,51 @@ final class TokenDetailsViewModel: TokenDetailsViewModelProtocol {
 
     private var token: Asset?
 
-    var onCollectionModels: (([TokenDetailsCollectionView.CellModel]) -> Void)?
-    var onSetTitle: ((String) -> Void)?
+    var onStateChange: ((TokenDetailsResources.State) -> Void)?
 
+    // MARK: - Init
     init(token: Asset) {
         self.token = token
     }
 
     // MARK: - Public methods
     func launch() {
-        setupSections()
-        setupTitle()
+        setupModels()
     }
 }
 
 private extension TokenDetailsViewModel {
     // MARK: - Private methods
+    func setupModels() {
+        setupTokenPriceView()
+        setupSections()
+        setupTitle()
+    }
+
+    func setupTokenPriceView() {
+        let models: [TokenPriceView.Model] = [
+            .currentPrice(
+                .init(
+                    title: Constants.currentPriceTitle,
+                    value: token?.data.marketData.priceUsd
+                )
+            ),
+            .dayPriceChange(
+                .init(
+                    title: Constants.dayPriceChangeTitle,
+                    value: token?.data.marketData.percentChangeUsdLast24Hours
+                )
+            ),
+            .hourPriceChange(
+                .init(
+                    title: Constants.hourPriceChangeTitle,
+                    value: token?.data.marketData.percentChangeUsdLast1Hour
+                )
+            )
+        ]
+        onStateChange?(.onPriceView(models))
+    }
+
     func setupSections() {
         let models: [TokenDetailsCollectionView.CellModel] = [
             .currentInfoSectionModel([
@@ -87,11 +115,11 @@ private extension TokenDetailsViewModel {
             )
         ]
         
-        onCollectionModels?(models)
+        onStateChange?(.onCollectionModels(models))
     }
 
     func setupTitle() {
         guard let title = token?.data.name else { return }
-        onSetTitle?(title)
+        onStateChange?(.onSetTitle(title))
     }
 }

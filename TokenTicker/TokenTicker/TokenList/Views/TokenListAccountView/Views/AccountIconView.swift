@@ -9,7 +9,7 @@ import UIKit
 
 final class AccountIconView: TView {
     private enum Constants {
-        static let color: UIColor = .black
+        static let color: CGColor = UIColor.black.cgColor
         static let borderWidth: CGFloat = 1.0
         static let cornerRadius: CGFloat = 15.0
         static let imageViewSize: CGSize = CGSize(width: 45.0, height: 45.0)
@@ -37,7 +37,7 @@ private extension AccountIconView {
     func setupCircle() {
         backgroundColor = .white
         layer.borderWidth = Constants.borderWidth
-        layer.borderColor = Constants.color.cgColor
+        layer.borderColor = Constants.color
         layer.cornerRadius = Constants.cornerRadius
     }
 
