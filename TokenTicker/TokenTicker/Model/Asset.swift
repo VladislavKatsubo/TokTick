@@ -61,3 +61,11 @@ struct Asset: Decodable, Equatable {
         }
     }
 }
+
+class AssetWrapper: NSObject {
+    let assets: [Asset]
+    
+    init(assets: [Asset]) {
+        self.assets = assets
+    }
+}

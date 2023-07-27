@@ -24,6 +24,7 @@ final class TokenListViewModel: TokenListViewModelProtocol {
     private let appContext: AppContext
 
     private var tokens: [Asset] = []
+    private let cache = NSCache<NSString, AssetWrapper>()
 
     var onStateChange: ((TokenListResources.State) -> Void)?
 
@@ -35,12 +36,20 @@ final class TokenListViewModel: TokenListViewModelProtocol {
 
     // MARK: - Public methods
     func launch() {
-        fetchAllTokens()
         setupTableViewMockData()
+        fetchAllTokens()
         setupAccountView()
     }
 
     func fetchAllTokens() {
+        let cacheKey = NSString(string: "TokensArray")
+
+        if let cachedData = cache.object(forKey: cacheKey) {
+            tokens = cachedData.assets
+            updateUI()
+            return
+        }
+
         let group = DispatchGroup()
 
         Tokens.allCases.forEach({ [weak self] in
@@ -60,9 +69,10 @@ final class TokenListViewModel: TokenListViewModelProtocol {
         group.notify(queue: .main) { [weak self] in
             guard let self = self else { return }
 
-            self.onStateChange?(.onFetchTokens(self.tokens))
-            self.onStateChange?(.onAssetTableLabel("\(String(describing: self.tokens.count)) Assets"))
-            self.onStateChange?(.onBalanceView(Constants.mockUserModel.balance))
+            let wrapper = AssetWrapper(assets: self.tokens)
+            self.cache.setObject(wrapper, forKey: cacheKey)
+
+            self.updateUI()
         }
     }
 
@@ -102,6 +112,13 @@ final class TokenListViewModel: TokenListViewModelProtocol {
 
 private extension TokenListViewModel {
     // MARK: - Private methods
+    private func updateUI() {
+        onStateChange?(.onFetchTokens(tokens))
+        onStateChange?(.onAssetTableLabel("\(String(describing: tokens.count)) Assets"))
+        onStateChange?(.onBalanceView(Constants.mockUserModel.balance))
+    }
+
+
     func setupTableViewMockData() {
         onStateChange?(.onMockTokenListView)
     }

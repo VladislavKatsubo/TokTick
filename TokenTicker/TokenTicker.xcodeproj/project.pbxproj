@@ -453,8 +453,8 @@
 		0DC9705229CCEB5E00EB88E1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0DC9705929CDB8C700EB88E1 /* TokenDetailsCollectionView */,
 				0DC9709329D3FF3000EB88E1 /* TokenPriceView */,
+				0DC9705929CDB8C700EB88E1 /* TokenDetailsCollectionView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
